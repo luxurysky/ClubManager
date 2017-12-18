@@ -7,10 +7,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import luxurysky.clubmanager.common.Log
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,12 +68,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        Log.d(TAG, "[onPrepareOptionsMenu]")
+//        Log.d(TAG, "[onPrepareOptionsMenu]")
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        Log.d(TAG, "[onCreateOptionsMenu]")
+//        Log.d(TAG, "[onCreateOptionsMenu]")
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         if (container.currentItem != 0) {
