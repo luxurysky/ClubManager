@@ -1,7 +1,7 @@
 package luxurysky.clubmanager
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_main.view.*
 import luxurysky.clubmanager.common.Log
 import luxurysky.clubmanager.dummy.DummyContent
 
-class MainActivity : AppCompatActivity(), MyClubFragment.OnListFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), MyClubListFragment.OnListFragmentInteractionListener {
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
@@ -61,9 +61,10 @@ class MainActivity : AppCompatActivity(), MyClubFragment.OnListFragmentInteracti
             }
         })
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {
+            startActivity(Intent(this, MyClubActivity::class.java))
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                    .setAction("Action", null).show()
         }
 
     }
@@ -76,11 +77,11 @@ class MainActivity : AppCompatActivity(), MyClubFragment.OnListFragmentInteracti
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
+        val id = item?.itemId
 
         if (id == R.id.action_search) {
             return true
@@ -101,7 +102,7 @@ class MainActivity : AppCompatActivity(), MyClubFragment.OnListFragmentInteracti
 
         override fun getItem(position: Int): Fragment {
             return if (position == 0) {
-                MyClubFragment.newInstance(2)
+                MyClubListFragment.newInstance(2)
             } else {
                 PlaceholderFragment.newInstance(position + 1)
             }
@@ -121,7 +122,7 @@ class MainActivity : AppCompatActivity(), MyClubFragment.OnListFragmentInteracti
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                                   savedInstanceState: Bundle?): View? {
             val rootView = inflater.inflate(R.layout.fragment_main, container, false)
-            rootView.section_label.text = getString(R.string.section_format, arguments.getInt(ARG_SECTION_NUMBER))
+            rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
             return rootView
         }
 

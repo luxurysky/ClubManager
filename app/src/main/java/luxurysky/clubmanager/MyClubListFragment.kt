@@ -26,7 +26,7 @@ import luxurysky.clubmanager.dummy.DummyContent.DummyItem
  * Mandatory empty constructor for the fragment manager to instantiate the
  * fragment (e.g. upon screen orientation changes).
  */
-class MyClubFragment : Fragment() {
+class MyClubListFragment : Fragment() {
     // TODO: Customize parameters
     private var mColumnCount = 2
     private var mListener: OnListFragmentInteractionListener? = null
@@ -36,7 +36,7 @@ class MyClubFragment : Fragment() {
         Log.d("TAG", "oncreate!!!")
 
         if (arguments != null) {
-            mColumnCount = arguments.getInt(ARG_COLUMN_COUNT)
+            mColumnCount = arguments!!.getInt(ARG_COLUMN_COUNT)
         }
     }
 
@@ -50,10 +50,9 @@ class MyClubFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_myclub_list, container, false)
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater!!.inflate(R.layout.fragment_myclub_list, container, false)
 
         // Set the adapter
 //        if (list is RecyclerView) {
@@ -105,8 +104,8 @@ class MyClubFragment : Fragment() {
         private val ARG_COLUMN_COUNT = "column-count"
 
         // TODO: Customize parameter initialization
-        fun newInstance(columnCount: Int): MyClubFragment {
-            val fragment = MyClubFragment()
+        fun newInstance(columnCount: Int): MyClubListFragment {
+            val fragment = MyClubListFragment()
             val args = Bundle()
             args.putInt(ARG_COLUMN_COUNT, columnCount)
             fragment.arguments = args

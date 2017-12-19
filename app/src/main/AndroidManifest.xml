@@ -3,6 +3,7 @@
     package="luxurysky.clubmanager">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".CMApplication"
@@ -22,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MyClubActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

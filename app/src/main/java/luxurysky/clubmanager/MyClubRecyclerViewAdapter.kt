@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-import luxurysky.clubmanager.MyClubFragment.OnListFragmentInteractionListener
+import luxurysky.clubmanager.MyClubListFragment.OnListFragmentInteractionListener
 import luxurysky.clubmanager.dummy.DummyContent.DummyItem
 
 /**
