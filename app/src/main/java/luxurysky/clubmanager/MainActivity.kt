@@ -11,8 +11,9 @@ import android.view.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import luxurysky.clubmanager.common.Log
+import luxurysky.clubmanager.dummy.DummyContent
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MyClubFragment.OnListFragmentInteractionListener {
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
@@ -45,9 +46,9 @@ class MainActivity : AppCompatActivity() {
                 super.onPageSelected(position)
                 Log.d(TAG, "[onPageSelected] position : $position")
                 if (position == 0) {
-                    fab.visibility = View.VISIBLE
+                    fab.show()
                 } else {
-                    fab.visibility = View.GONE
+                    fab.hide()
                 }
             }
 
@@ -67,14 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-//        Log.d(TAG, "[onPrepareOptionsMenu]")
-        return super.onPrepareOptionsMenu(menu)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        Log.d(TAG, "[onCreateOptionsMenu]")
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         if (container.currentItem != 0) {
             menu.clear()
@@ -95,6 +89,9 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onListFragmentInteraction(item: DummyContent.DummyItem) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     /**
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -103,9 +100,11 @@ class MainActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1)
+            return if (position == 0) {
+                MyClubFragment.newInstance(2)
+            } else {
+                PlaceholderFragment.newInstance(position + 1)
+            }
         }
 
         override fun getCount(): Int {
