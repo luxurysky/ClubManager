@@ -5,7 +5,6 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_my_club.*
 
 class MyClubActivity : AppCompatActivity() {
@@ -13,6 +12,9 @@ class MyClubActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.content, ClubInfoFragment.newInstance("1", "2"))
+                fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
@@ -21,7 +23,10 @@ class MyClubActivity : AppCompatActivity() {
             R.id.navigation_notifications -> {
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_a -> {
+            R.id.navigation_schedule -> {
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.content, ClubScheduleFragment.newInstance("1", "2"))
+                fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_b -> {
@@ -40,11 +45,8 @@ class MyClubActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
 
-        Glide.with(this)
-                .load("https://st.depositphotos.com/2218430/3360/i/950/depositphotos_33601037-stock-photo-fc-barcelona-team.jpg")
-                .into(myClubImage)
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation.selectedItemId = R.id.navigation_home
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

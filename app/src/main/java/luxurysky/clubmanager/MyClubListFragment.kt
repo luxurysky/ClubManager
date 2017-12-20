@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_myclub_list.*
 import kotlinx.android.synthetic.main.fragment_myclub_list.view.*
 import luxurysky.clubmanager.dummy.DummyContent
 import luxurysky.clubmanager.dummy.DummyContent.DummyItem
@@ -44,15 +44,15 @@ class MyClubListFragment : Fragment() {
         super.onConfigurationChanged(newConfig)
 
         if (newConfig?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            (list.layoutManager as? GridLayoutManager)?.spanCount = 3
+            ((view as RecyclerView).layoutManager as GridLayoutManager).spanCount = 3
+
         } else if (newConfig?.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            (list.layoutManager as? GridLayoutManager)?.spanCount = 2
+            ((view as RecyclerView).layoutManager as GridLayoutManager).spanCount = 2
         }
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_myclub_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_myclub_list, container, false)
 
         // Set the adapter
 //        if (list is RecyclerView) {
@@ -75,7 +75,7 @@ class MyClubListFragment : Fragment() {
         if (context is OnListFragmentInteractionListener) {
             mListener = context
         } else {
-            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
+//            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
         }
     }
 

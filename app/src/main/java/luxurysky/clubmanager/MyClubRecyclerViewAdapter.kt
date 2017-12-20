@@ -4,8 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-
+import com.bumptech.glide.Glide
 import luxurysky.clubmanager.MyClubListFragment.OnListFragmentInteractionListener
 import luxurysky.clubmanager.dummy.DummyContent.DummyItem
 
@@ -17,18 +18,22 @@ import luxurysky.clubmanager.dummy.DummyContent.DummyItem
 class MyClubRecyclerViewAdapter(private val mValues: List<DummyItem>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<MyClubRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_myclub, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_myclub, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.mItem = mValues[position]
-        holder.mIdView.text = mValues[position].id
-        holder.mContentView.text = mValues[position].content
+//        holder.mEmblemImageView.sets
+        holder.mNameTextView.text = mValues[position].content
+
+        Glide.with(holder.mEmblemImageView.context)
+                .load("https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F84%2F09%2F146_100308409_team_image_url_1435388480471.jpg")
+                .into(holder.mEmblemImageView)
+
 
         holder.mView.setOnClickListener {
-//            mListener?.onListFragmentInteraction(holder.mItem)
+            //            mListener?.onListFragmentInteraction(holder.mItem)
         }
     }
 
@@ -37,17 +42,17 @@ class MyClubRecyclerViewAdapter(private val mValues: List<DummyItem>, private va
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView
-        val mContentView: TextView
+        val mEmblemImageView: ImageView
+        val mNameTextView: TextView
         var mItem: DummyItem? = null
 
         init {
-            mIdView = mView.findViewById<View>(R.id.clubName) as TextView
-            mContentView = mView.findViewById<View>(R.id.clubName) as TextView
+            mEmblemImageView = mView.findViewById<View>(R.id.clubEmblem) as ImageView
+            mNameTextView = mView.findViewById<View>(R.id.clubName) as TextView
         }
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" + mNameTextView.text + "'"
         }
     }
 }
