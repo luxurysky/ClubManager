@@ -2,7 +2,7 @@ package luxurysky.clubmanager
 
 import android.app.Application
 import io.realm.Realm
-import luxurysky.clubmanager.common.Log
+import luxurysky.clubmanager.util.Log
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.model.Player
 

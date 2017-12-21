@@ -1,4 +1,4 @@
-package luxurysky.clubmanager
+package luxurysky.clubmanager.view
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,11 +10,12 @@ import com.bumptech.glide.Glide
 import io.realm.RealmRecyclerViewAdapter
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_myclub.view.*
-import luxurysky.clubmanager.MyClubListFragment.OnListFragmentInteractionListener
+import luxurysky.clubmanager.R
+import luxurysky.clubmanager.view.ClubListFragment.OnListFragmentInteractionListener
 import luxurysky.clubmanager.model.Club
 
-class MyClubRecyclerViewAdapter(private val mValues: RealmResults<Club>, private val mListener: OnListFragmentInteractionListener?)
-    : RealmRecyclerViewAdapter<Club, MyClubRecyclerViewAdapter.ViewHolder>(mValues, true) {
+class ClubRecyclerViewAdapter(private val mValues: RealmResults<Club>, private val mListener: OnListFragmentInteractionListener?)
+    : RealmRecyclerViewAdapter<Club, ClubRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_myclub, parent, false)

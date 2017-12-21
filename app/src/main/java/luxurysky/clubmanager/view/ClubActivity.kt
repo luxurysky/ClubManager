@@ -1,4 +1,4 @@
-package luxurysky.clubmanager
+package luxurysky.clubmanager.view
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_my_club.*
+import luxurysky.clubmanager.R
 
-class MyClubActivity : AppCompatActivity() {
+class ClubActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {

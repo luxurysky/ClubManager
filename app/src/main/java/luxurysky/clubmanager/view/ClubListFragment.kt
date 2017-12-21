@@ -1,4 +1,4 @@
-package luxurysky.clubmanager
+package luxurysky.clubmanager.view
 
 import android.content.Context
 import android.content.res.Configuration
@@ -11,9 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_myclub_list.view.*
+import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 
-class MyClubListFragment : Fragment() {
+class ClubListFragment : Fragment() {
     private var mListener: OnListFragmentInteractionListener? = null
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
@@ -35,7 +36,7 @@ class MyClubListFragment : Fragment() {
 
         val realm = Realm.getDefaultInstance()
         val clubs = realm.where(Club::class.java).findAll()
-        view.list.adapter = MyClubRecyclerViewAdapter(clubs, mListener)
+        view.list.adapter = ClubRecyclerViewAdapter(clubs, mListener)
 
         return view
     }
@@ -60,8 +61,8 @@ class MyClubListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(columnCount: Int): MyClubListFragment {
-            return MyClubListFragment()
+        fun newInstance(columnCount: Int): ClubListFragment {
+            return ClubListFragment()
         }
     }
 }

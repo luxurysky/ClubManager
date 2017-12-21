@@ -1,4 +1,4 @@
-package luxurysky.clubmanager
+package luxurysky.clubmanager.view
 
 import android.content.Context
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.realm.Realm
+import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Player
 
 class PlayerListFragment : Fragment() {
@@ -40,7 +41,7 @@ class PlayerListFragment : Fragment() {
 
             val realm = Realm.getDefaultInstance()
             val players = realm.where(Player::class.java).findAll()
-            view.adapter = MyPlayerRecyclerViewAdapter(players, mListener)
+            view.adapter = PlayerRecyclerViewAdapter(players, mListener)
         }
         return view
     }

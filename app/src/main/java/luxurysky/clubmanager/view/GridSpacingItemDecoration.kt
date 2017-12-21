@@ -1,4 +1,4 @@
-package luxurysky.clubmanager
+package luxurysky.clubmanager.view
 
 import android.graphics.Rect
 import android.support.v7.widget.GridLayoutManager

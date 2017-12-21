@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.common
+package luxurysky.clubmanager.util
 
 import android.Manifest
 import android.content.Context
