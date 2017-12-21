@@ -21,7 +21,7 @@
         android:title="@string/title_schedule" />
 
     <item
-        android:id="@+id/navigation_b"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_players"
+        android:icon="@drawable/ic_people_black_24dp"
+        android:title="@string/title_players" />
 </menu>

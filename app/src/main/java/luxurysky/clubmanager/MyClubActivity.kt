@@ -29,8 +29,12 @@ class MyClubActivity : AppCompatActivity() {
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_b -> {
+            R.id.navigation_players -> {
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.content, PlayerListFragment.newInstance(2))
+                fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
+
             }
         }
         false

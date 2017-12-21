@@ -1,21 +1,17 @@
 package luxurysky.clubmanager
 
 import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.realm.Realm
-import kotlinx.android.synthetic.main.fragment_myclub_list.view.*
+
 import luxurysky.clubmanager.dummy.DummyContent
 import luxurysky.clubmanager.dummy.DummyContent.DummyItem
-import luxurysky.clubmanager.model.Club
 
 /**
  * A fragment representing a list of Items.
@@ -28,59 +24,43 @@ import luxurysky.clubmanager.model.Club
  * Mandatory empty constructor for the fragment manager to instantiate the
  * fragment (e.g. upon screen orientation changes).
  */
-class MyClubListFragment : Fragment() {
+class PlayerListFragment : Fragment() {
     // TODO: Customize parameters
     private var mColumnCount = 2
     private var mListener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("TAG", "oncreate!!!")
 
         if (arguments != null) {
             mColumnCount = arguments!!.getInt(ARG_COLUMN_COUNT)
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
-        super.onConfigurationChanged(newConfig)
-
-        if (newConfig?.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            ((view as RecyclerView).layoutManager as GridLayoutManager).spanCount = 3
-
-        } else if (newConfig?.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            ((view as RecyclerView).layoutManager as GridLayoutManager).spanCount = 2
-        }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_myclub_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_player_list, container, false)
 
         // Set the adapter
-//        if (list is RecyclerView) {
-        val context = view.context
-        if (mColumnCount <= 1) {
-            view.list.layoutManager = LinearLayoutManager(context)
-        } else {
-            view.list.layoutManager = GridLayoutManager(context, mColumnCount)
+        if (view is RecyclerView) {
+            val context = view.getContext()
+            if (mColumnCount <= 1) {
+                view.layoutManager = LinearLayoutManager(context)
+            } else {
+                view.layoutManager = GridLayoutManager(context, mColumnCount)
+            }
+            view.adapter = MyPlayerRecyclerViewAdapter(DummyContent.ITEMS, mListener)
         }
-
-        val realm = Realm.getDefaultInstance()
-        val clubs = realm.where(Club::class.java).findAll()
-        view.list.adapter = MyClubRecyclerViewAdapter(clubs, mListener)
-//        }
-
-
         return view
     }
 
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnListFragmentInteractionListener) {
             mListener = context
         } else {
-//            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
+//            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
         }
     }
 
@@ -109,8 +89,8 @@ class MyClubListFragment : Fragment() {
         private val ARG_COLUMN_COUNT = "column-count"
 
         // TODO: Customize parameter initialization
-        fun newInstance(columnCount: Int): MyClubListFragment {
-            val fragment = MyClubListFragment()
+        fun newInstance(columnCount: Int): PlayerListFragment {
+            val fragment = PlayerListFragment()
             val args = Bundle()
             args.putInt(ARG_COLUMN_COUNT, columnCount)
             fragment.arguments = args
