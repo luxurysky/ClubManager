@@ -1,6 +1,8 @@
 package luxurysky.clubmanager
 
+import android.app.Activity
 import android.app.Application
+import android.os.Bundle
 import io.realm.Realm
 import luxurysky.clubmanager.util.Log
 import luxurysky.clubmanager.model.Club
@@ -9,19 +11,49 @@ import luxurysky.clubmanager.model.Player
 /**
  * Created by HWANGJIN on 2017-12-18.
  */
-class CMApplication : Application() {
+class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
     companion object {
         private val TAG = CMApplication::class.java.simpleName
     }
 
     override fun onCreate() {
         super.onCreate()
+        
+        registerActivityLifecycleCallbacks(this)
 
         Log.init(this)
         Realm.init(this)
 
         createDummyClubs()
         createDummyPlayers()
+    }
+
+    override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
+        Log.i(TAG, "[onActivityCreated] $activity")
+    }
+
+    override fun onActivityStarted(activity: Activity?) {
+        Log.i(TAG, "[onActivityStarted] $activity")
+    }
+    
+    override fun onActivityResumed(activity: Activity?) {
+        Log.i(TAG, "[onActivityResumed] $activity")
+    }
+    
+    override fun onActivityPaused(activity: Activity?) {
+        Log.i(TAG, "[onActivityPaused] $activity")
+    }
+
+    override fun onActivityStopped(activity: Activity?) {
+        Log.i(TAG, "[onActivityStopped] $activity")
+    }
+
+    override fun onActivitySaveInstanceState(activity: Activity?, oustState: Bundle?) {
+        Log.i(TAG, "[onActivitySaveInstanceState] $activity")
+    }
+
+    override fun onActivityDestroyed(activity: Activity?) {
+        Log.i(TAG, "[onActivityDestroyed] $activity")
     }
 
     private fun createDummyClubs() {

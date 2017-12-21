@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.realm.Realm
-import kotlinx.android.synthetic.main.fragment_myclub_list.view.*
+import kotlinx.android.synthetic.main.fragment_club_list.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 
@@ -29,7 +29,7 @@ class ClubListFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_myclub_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_club_list, container, false)
 
         val context = view.context
         view.list.layoutManager = GridLayoutManager(context, 2)

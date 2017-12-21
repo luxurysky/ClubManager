@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import io.realm.RealmRecyclerViewAdapter
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.fragment_myclub.view.*
+import kotlinx.android.synthetic.main.fragment_club.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.view.ClubListFragment.OnListFragmentInteractionListener
 import luxurysky.clubmanager.model.Club
@@ -18,7 +18,7 @@ class ClubRecyclerViewAdapter(private val mValues: RealmResults<Club>, private v
     : RealmRecyclerViewAdapter<Club, ClubRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_myclub, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_club, parent, false)
         return ViewHolder(view)
     }
 

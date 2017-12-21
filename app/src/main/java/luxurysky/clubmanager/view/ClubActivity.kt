@@ -5,7 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_my_club.*
+import kotlinx.android.synthetic.main.activity_club.*
 import luxurysky.clubmanager.R
 
 class ClubActivity : AppCompatActivity() {
@@ -43,7 +43,7 @@ class ClubActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_club)
+        setContentView(R.layout.activity_club)
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

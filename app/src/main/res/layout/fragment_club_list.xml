@@ -8,4 +8,4 @@
     android:layout_height="match_parent"
     app:layoutManager="GridLayoutManager"
     tools:context="luxurysky.clubmanager.view.ClubListFragment"
-    tools:listitem="@layout/fragment_myclub" />
+    tools:listitem="@layout/fragment_club" />
