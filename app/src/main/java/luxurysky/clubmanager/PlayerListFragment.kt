@@ -9,21 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.realm.Realm
+import luxurysky.clubmanager.model.Player
 
-import luxurysky.clubmanager.dummy.DummyContent
-import luxurysky.clubmanager.dummy.DummyContent.DummyItem
-
-/**
- * A fragment representing a list of Items.
- *
- *
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
- * interface.
- */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- */
 class PlayerListFragment : Fragment() {
     // TODO: Customize parameters
     private var mColumnCount = 2
@@ -49,7 +37,10 @@ class PlayerListFragment : Fragment() {
             } else {
                 view.layoutManager = GridLayoutManager(context, mColumnCount)
             }
-            view.adapter = MyPlayerRecyclerViewAdapter(DummyContent.ITEMS, mListener)
+
+            val realm = Realm.getDefaultInstance()
+            val players = realm.where(Player::class.java).findAll()
+            view.adapter = MyPlayerRecyclerViewAdapter(players, mListener)
         }
         return view
     }
@@ -80,7 +71,7 @@ class PlayerListFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem)
+        fun onListFragmentInteraction(item: Player)
     }
 
     companion object {

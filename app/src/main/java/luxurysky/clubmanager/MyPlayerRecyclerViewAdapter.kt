@@ -4,31 +4,37 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import io.realm.RealmRecyclerViewAdapter
+import io.realm.RealmResults
+import kotlinx.android.synthetic.main.fragment_player.view.*
 
 import luxurysky.clubmanager.PlayerListFragment.OnListFragmentInteractionListener
-import luxurysky.clubmanager.dummy.DummyContent.DummyItem
+import luxurysky.clubmanager.model.Player
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
-class MyPlayerRecyclerViewAdapter(private val mValues: List<DummyItem>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<MyPlayerRecyclerViewAdapter.ViewHolder>() {
+
+class MyPlayerRecyclerViewAdapter(private val mValues: RealmResults<Player>, private val mListener: OnListFragmentInteractionListener?)
+    : RealmRecyclerViewAdapter<Player, MyPlayerRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_player, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_player, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mItem = mValues[position]
-        holder.mIdView.text = mValues[position].id
-        holder.mContentView.text = mValues[position].content
+//        holder.mIdView.text = mValues[position]!!.name
+//        holder.mContentView.text = mValues[position].content
+
+        Glide.with(holder.mPhotoView.context)
+                .load(mValues[position]!!.photoUrl)
+                .into(holder.mPhotoView)
+
+        holder.mNameView.text = mValues[position]!!.name
 
         holder.mView.setOnClickListener {
-//            mListener?.onListFragmentInteraction(holder.mItem)
+            //            mListener?.onListFragmentInteraction(holder.mItem)
         }
     }
 
@@ -37,12 +43,7 @@ class MyPlayerRecyclerViewAdapter(private val mValues: List<DummyItem>, private 
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.findViewById<View>(R.id.id) as TextView
-        val mContentView: TextView = mView.findViewById<View>(R.id.content) as TextView
-        var mItem: DummyItem? = null
-
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
-        }
+        val mPhotoView: ImageView = mView.playerPhoto
+        val mNameView: TextView = mView.playerName
     }
 }

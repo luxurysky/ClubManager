@@ -4,6 +4,7 @@ import android.app.Application
 import io.realm.Realm
 import luxurysky.clubmanager.common.Log
 import luxurysky.clubmanager.model.Club
+import luxurysky.clubmanager.model.Player
 
 /**
  * Created by HWANGJIN on 2017-12-18.
@@ -19,13 +20,18 @@ class CMApplication : Application() {
         Log.init(this)
         Realm.init(this)
 
-        createDummy()
+        createDummyClubs()
+        createDummyPlayers()
     }
 
-    private fun createDummy() {
+    private fun createDummyClubs() {
         val realm = Realm.getDefaultInstance()
         val clubs = realm.where(Club::class.java).findAll()
         Log.i(TAG, "club count : " + clubs.count())
+
+        realm.beginTransaction()
+        clubs.deleteAllFromRealm()
+        realm.commitTransaction()
 
         if (clubs.size == 0) {
 
@@ -40,9 +46,7 @@ class CMApplication : Application() {
             club2.name = "레알 마드리드"
             club2.emblemUrl = "https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F84%2F21%2F146_100308421_team_image_url_1435302794719.jpg"
             realm.commitTransaction()
-        }
 
-        if (clubs.size == 2) {
             realm.beginTransaction()
             val club3 = realm.createObject(Club::class.java)
             club3.name = "토트넘"
@@ -51,6 +55,61 @@ class CMApplication : Application() {
         }
 
         Log.i(TAG, "club count : " + clubs.count())
+    }
+
+    private fun createDummyPlayers() {
+        val realm = Realm.getDefaultInstance()
+        val players = realm.where(Player::class.java).findAll()
+
+        realm.beginTransaction()
+        players.deleteAllFromRealm()
+        realm.commitTransaction()
+
+        Log.i(TAG, "player count : " + players.count())
+
+        if (players.size == 0) {
+            realm.beginTransaction()
+            val player1 = realm.createObject(Player::class.java)
+            player1.name = "Heung-Min Son"
+            player1.position = "Forward"
+            player1.squadNumber = 7
+            player1.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/hm_son.jpg"
+            realm.commitTransaction()
+
+            realm.beginTransaction()
+            val player2 = realm.createObject(Player::class.java)
+            player2.name = "Christian Eriksen"
+            player2.position = "Midfielder"
+            player2.squadNumber = 23
+            player2.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/c_eriksen.jpg"
+            realm.commitTransaction()
+
+            realm.beginTransaction()
+            val player3 = realm.createObject(Player::class.java)
+            player3.name = "Hugo Lloris"
+            player3.position = "Goalkeeper"
+            player3.squadNumber = 1
+            player3.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/h_lloris.jpg"
+            realm.commitTransaction()
+
+            realm.beginTransaction()
+            val player4 = realm.createObject(Player::class.java)
+            player4.name = "Jan Vertonghen"
+            player4.position = "Defender"
+            player4.squadNumber = 5
+            player4.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/j_vertonghen.jpg"
+            realm.commitTransaction()
+
+            realm.beginTransaction()
+            val player5 = realm.createObject(Player::class.java)
+            player5.name = "Dele Alli"
+            player5.position = "Midfielder"
+            player5.squadNumber = 20
+            player5.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/d_alli.jpg"
+            realm.commitTransaction()
+        }
+
+        Log.i(TAG, "player count : " + players.count())
     }
 
 }
