@@ -5,42 +5,16 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_myclub_list.view.*
-import luxurysky.clubmanager.dummy.DummyContent
-import luxurysky.clubmanager.dummy.DummyContent.DummyItem
 import luxurysky.clubmanager.model.Club
 
-/**
- * A fragment representing a list of Items.
- *
- *
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
- * interface.
- */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- */
 class MyClubListFragment : Fragment() {
-    // TODO: Customize parameters
-    private var mColumnCount = 2
     private var mListener: OnListFragmentInteractionListener? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("TAG", "oncreate!!!")
-
-        if (arguments != null) {
-            mColumnCount = arguments!!.getInt(ARG_COLUMN_COUNT)
-        }
-    }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
         super.onConfigurationChanged(newConfig)
@@ -56,20 +30,12 @@ class MyClubListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_myclub_list, container, false)
 
-        // Set the adapter
-//        if (list is RecyclerView) {
         val context = view.context
-        if (mColumnCount <= 1) {
-            view.list.layoutManager = LinearLayoutManager(context)
-        } else {
-            view.list.layoutManager = GridLayoutManager(context, mColumnCount)
-        }
+        view.list.layoutManager = GridLayoutManager(context, 2)
 
         val realm = Realm.getDefaultInstance()
         val clubs = realm.where(Club::class.java).findAll()
         view.list.adapter = MyClubRecyclerViewAdapter(clubs, mListener)
-//        }
-
 
         return view
     }
@@ -80,7 +46,7 @@ class MyClubListFragment : Fragment() {
         if (context is OnListFragmentInteractionListener) {
             mListener = context
         } else {
-//            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
+            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
         }
     }
 
@@ -89,32 +55,13 @@ class MyClubListFragment : Fragment() {
         mListener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem)
+        fun onListFragmentInteraction(item: Club)
     }
 
     companion object {
-
-        // TODO: Customize parameter argument names
-        private val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
         fun newInstance(columnCount: Int): MyClubListFragment {
-            val fragment = MyClubListFragment()
-            val args = Bundle()
-            args.putInt(ARG_COLUMN_COUNT, columnCount)
-            fragment.arguments = args
-            return fragment
+            return MyClubListFragment()
         }
     }
 }

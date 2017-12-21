@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
+import luxurysky.clubmanager.model.Club
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MyClubListFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,4 +37,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onListFragmentInteraction(item: Club) {
+        startActivity(Intent(this, MyClubActivity::class.java))
+    }
 }
