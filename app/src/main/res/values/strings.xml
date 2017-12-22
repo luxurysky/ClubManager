@@ -2,10 +2,12 @@
     <string name="app_name">ClubManager</string>
     <string name="action_search">Search</string>
     <string name="action_more">more</string>
+    <string name="action_save">Save</string>
     <string name="action_edit">Edit</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_players">Players</string>
     <string name="title_schedule">Schedule</string>
+    <string name="title_create_club">Create Club</string>
 </resources>

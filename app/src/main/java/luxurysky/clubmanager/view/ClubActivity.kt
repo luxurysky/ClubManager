@@ -55,7 +55,7 @@ class ClubActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_my_club, menu)
+        menuInflater.inflate(R.menu.menu_club, menu)
         return true
     }
 

@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
-import io.realm.RealmResults
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.fragment_player.view.*
 import luxurysky.clubmanager.R
@@ -17,7 +17,7 @@ import luxurysky.clubmanager.model.Player
 import luxurysky.clubmanager.view.PlayerListFragment.OnListFragmentInteractionListener
 
 
-class PlayerRecyclerViewAdapter(private val mValues: RealmResults<Player>, private val mListener: OnListFragmentInteractionListener?)
+class PlayerRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Player>, private val mListener: OnListFragmentInteractionListener?)
     : RealmRecyclerViewAdapter<Player, PlayerRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,11 +27,11 @@ class PlayerRecyclerViewAdapter(private val mValues: RealmResults<Player>, priva
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.mPhotoView.context)
-                .load(mValues[position]!!.photoUrl)
+                .load(mValues[position].photoUrl)
                 .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.ALL)))
                 .into(holder.mPhotoView)
 
-        holder.mNameView.text = mValues[position]!!.name
+        holder.mNameView.text = mValues[position].name
 
         holder.mView.setOnClickListener {
             // mListener?.onListFragmentInteraction(holder.mItem)

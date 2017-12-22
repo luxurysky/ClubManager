@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
-import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_club.view.*
 import luxurysky.clubmanager.R
-import luxurysky.clubmanager.view.ClubListFragment.OnListFragmentInteractionListener
 import luxurysky.clubmanager.model.Club
+import luxurysky.clubmanager.view.ClubListFragment.OnListFragmentInteractionListener
 
-class ClubRecyclerViewAdapter(private val mValues: RealmResults<Club>, private val mListener: OnListFragmentInteractionListener?)
+class ClubRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Club>, private val mListener: OnListFragmentInteractionListener?)
     : RealmRecyclerViewAdapter<Club, ClubRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,15 +23,15 @@ class ClubRecyclerViewAdapter(private val mValues: RealmResults<Club>, private v
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mNameTextView.text = mValues[position]!!.name
+        holder.mNameTextView.text = mValues[position].name
 
         Glide.with(holder.mEmblemImageView.context)
-                .load(mValues[position]!!.emblemUrl)
+                .load(mValues[position].emblemUrl)
                 .into(holder.mEmblemImageView)
 
 
         holder.mView.setOnClickListener {
-            mListener?.onListFragmentInteraction(mValues[position]!!)
+            mListener?.onListFragmentInteraction(mValues[position])
         }
     }
 
