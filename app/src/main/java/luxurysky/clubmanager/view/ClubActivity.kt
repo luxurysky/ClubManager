@@ -13,24 +13,29 @@ class ClubActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
+                fab.hide()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.content, ClubInfoFragment.newInstance("1", "2"))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
+                fab.hide()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
+                fab.hide()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_schedule -> {
+                fab.hide()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.content, ClubScheduleFragment.newInstance("1", "2"))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_players -> {
+                fab.show()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.content, PlayerListFragment.newInstance(2))
                 fragmentTransaction.commitAllowingStateLoss()
