@@ -110,7 +110,7 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
 
             realm.beginTransaction()
             val player2 = realm.createObject(Player::class.java)
-            player2.name = "Christian Eriksen"
+            player2.name = "Christian Eriksenabcdefghijk"
             player2.position = "Midfielder"
             player2.squadNumber = 23
             player2.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/c_eriksen.jpg"

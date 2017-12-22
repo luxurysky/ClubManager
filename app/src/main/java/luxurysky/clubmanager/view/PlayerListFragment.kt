@@ -39,6 +39,9 @@ class PlayerListFragment : Fragment() {
                 view.layoutManager = GridLayoutManager(context, mColumnCount)
             }
 
+            view.addItemDecoration(GridSpacingItemDecoration(2, 20))
+
+
             val realm = Realm.getDefaultInstance()
             val players = realm.where(Player::class.java).findAll()
             view.adapter = PlayerRecyclerViewAdapter(players, mListener)

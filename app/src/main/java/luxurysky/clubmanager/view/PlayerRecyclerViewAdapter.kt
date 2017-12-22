@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import io.realm.RealmRecyclerViewAdapter
 import io.realm.RealmResults
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.fragment_player.view.*
 import luxurysky.clubmanager.R
-
-import luxurysky.clubmanager.view.PlayerListFragment.OnListFragmentInteractionListener
 import luxurysky.clubmanager.model.Player
+import luxurysky.clubmanager.view.PlayerListFragment.OnListFragmentInteractionListener
 
 
 class PlayerRecyclerViewAdapter(private val mValues: RealmResults<Player>, private val mListener: OnListFragmentInteractionListener?)
@@ -25,17 +26,15 @@ class PlayerRecyclerViewAdapter(private val mValues: RealmResults<Player>, priva
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.mIdView.text = mValues[position]!!.name
-//        holder.mContentView.text = mValues[position].content
-
         Glide.with(holder.mPhotoView.context)
                 .load(mValues[position]!!.photoUrl)
+                .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.ALL)))
                 .into(holder.mPhotoView)
 
         holder.mNameView.text = mValues[position]!!.name
 
         holder.mView.setOnClickListener {
-            //            mListener?.onListFragmentInteraction(holder.mItem)
+            // mListener?.onListFragmentInteraction(holder.mItem)
         }
     }
 
