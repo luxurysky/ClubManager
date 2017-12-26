@@ -24,7 +24,6 @@
         android:shadowDx="1.0"
         android:shadowDy="1.0"
         android:shadowRadius="1.5"
-        android:text="FC 바르셀로나"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/myClubImage"

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.IntroActivity"
+            android:name=".view.intro.IntroActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
@@ -29,11 +29,15 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.clublist.ClubListActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.ClubCreateActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="luxurysky.clubmanager.view.playerdetail.PlayerDetailActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

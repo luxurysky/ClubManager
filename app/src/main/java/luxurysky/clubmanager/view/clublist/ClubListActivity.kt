@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.clublist
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,10 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
+import luxurysky.clubmanager.view.ClubActivity
+import luxurysky.clubmanager.view.ClubCreateActivity
 
-class MainActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInteractionListener {
+class ClubListActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,8 @@ class MainActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInterac
     }
 
     override fun onListFragmentInteraction(item: Club) {
-        startActivity(Intent(this, ClubActivity::class.java))
+        val intent = Intent(this@ClubListActivity, ClubActivity::class.java)
+        intent.putExtra(ClubActivity.EXTRA_CLUB_ID, item.id)
+        startActivity(intent)
     }
 }

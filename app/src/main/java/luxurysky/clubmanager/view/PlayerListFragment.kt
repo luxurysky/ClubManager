@@ -1,6 +1,6 @@
 package luxurysky.clubmanager.view
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -12,11 +12,12 @@ import android.view.ViewGroup
 import io.realm.Realm
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Player
+import luxurysky.clubmanager.view.playerdetail.PlayerDetailActivity
 
 class PlayerListFragment : Fragment() {
     // TODO: Customize parameters
     private var mColumnCount = 2
-    private var mListener: OnListFragmentInteractionListener? = null
+//    private var mListener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,18 +51,29 @@ class PlayerListFragment : Fragment() {
     }
 
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            mListener = context
-        } else {
-//            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        if (context is OnListFragmentInteractionListener) {
+//            mListener = context
+//        } else {
+////            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
+//        }
+//    }
 
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
+
+//    override fun onDetach() {
+//        super.onDetach()
+////        mListener = null
+//    }
+
+    private val mListener = object : OnListFragmentInteractionListener {
+        override fun onListFragmentInteraction(item: Player) {
+//            Toast.makeText(context, item.name, Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, PlayerDetailActivity::class.java)
+            intent.putExtra(PlayerDetailActivity.EXTRA_PLAYER_ID, item.id)
+            startActivity(intent)
+
+        }
     }
 
     /**

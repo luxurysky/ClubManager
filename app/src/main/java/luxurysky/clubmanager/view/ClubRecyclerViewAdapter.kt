@@ -12,7 +12,7 @@ import io.realm.RealmRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_club.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
-import luxurysky.clubmanager.view.ClubListFragment.OnListFragmentInteractionListener
+import luxurysky.clubmanager.view.clublist.ClubListFragment.OnListFragmentInteractionListener
 
 class ClubRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Club>, private val mListener: OnListFragmentInteractionListener?)
     : RealmRecyclerViewAdapter<Club, ClubRecyclerViewAdapter.ViewHolder>(mValues, true) {

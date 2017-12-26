@@ -9,31 +9,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import io.realm.Realm
+import kotlinx.android.synthetic.main.fragment_club_info.*
 import kotlinx.android.synthetic.main.fragment_club_info.view.*
 import luxurysky.clubmanager.R
+import luxurysky.clubmanager.model.DataHelper
 
-
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [ClubInfoFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [ClubInfoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ClubInfoFragment : Fragment() {
 
-    // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
+    private var mClubId: String? = null
 
     private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
-            mParam1 = arguments!!.getString(ARG_PARAM1)
-            mParam2 = arguments!!.getString(ARG_PARAM2)
+            mClubId = arguments!!.getString(ARG_PARAM1)
         }
         Log.d(TAG, "[onCreate] ${hashCode()}")
     }
@@ -42,8 +33,13 @@ class ClubInfoFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_club_info, container, false)
 
+        val realm = Realm.getDefaultInstance()
+        val club = DataHelper.findClub(realm, mClubId ?: "")
+
+        view.myClubName.text = club?.name
+
         Glide.with(this)
-                .load("https://st.depositphotos.com/2218430/3360/i/950/depositphotos_33601037-stock-photo-fc-barcelona-team.jpg")
+                .load(club?.playersUrl)
                 .into(view.myClubImage)
         Log.d(TAG, "[onCreateView]")
         return view
@@ -95,25 +91,12 @@ class ClubInfoFragment : Fragment() {
     companion object {
         private val TAG = ClubInfoFragment::class.java.simpleName
 
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private val ARG_PARAM1 = "param1"
-        private val ARG_PARAM2 = "param2"
+        private val ARG_PARAM1 = "club_id"
 
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ClubInfoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): ClubInfoFragment {
+        fun newInstance(clubId: String): ClubInfoFragment {
             val fragment = ClubInfoFragment()
             val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
+            args.putString(ARG_PARAM1, clubId)
             fragment.arguments = args
             return fragment
         }

@@ -10,12 +10,17 @@ import luxurysky.clubmanager.R
 
 class ClubActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_CLUB_ID = "CLUB_ID"
+    }
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
                 fab.hide()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.content, ClubInfoFragment.newInstance("1", "2"))
+                val playerId = intent.getStringExtra(ClubActivity.EXTRA_CLUB_ID)
+                fragmentTransaction.replace(R.id.content, ClubInfoFragment.newInstance(playerId))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
@@ -51,9 +56,13 @@ class ClubActivity : AppCompatActivity() {
         setContentView(R.layout.activity_club)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+        supportActionBar?.run {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+        }
+
+
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home

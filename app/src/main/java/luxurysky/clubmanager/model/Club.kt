@@ -10,7 +10,8 @@ import java.util.*
 open class Club : RealmObject() {
 
     @PrimaryKey
-    private var id = UUID.randomUUID().toString()
+    var id = UUID.randomUUID().toString()
     var name: String = ""
     var emblemUrl: String = ""
+    var playersUrl: String = ""
 }

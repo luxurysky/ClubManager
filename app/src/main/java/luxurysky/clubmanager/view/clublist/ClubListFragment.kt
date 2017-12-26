@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.clublist
 
 import android.content.Context
 import android.content.res.Configuration
@@ -13,6 +13,7 @@ import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_club_list.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
+import luxurysky.clubmanager.view.ClubRecyclerViewAdapter
 
 class ClubListFragment : Fragment() {
     private var mListener: OnListFragmentInteractionListener? = null
