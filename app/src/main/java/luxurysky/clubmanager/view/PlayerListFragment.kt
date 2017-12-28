@@ -4,26 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.realm.Realm
+import io.realm.RealmList
 import luxurysky.clubmanager.R
+import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.model.Player
 import luxurysky.clubmanager.view.playerdetail.PlayerDetailActivity
 
 class PlayerListFragment : Fragment() {
     // TODO: Customize parameters
-    private var mColumnCount = 2
+    private var mClubId = ""
 //    private var mListener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if (arguments != null) {
-            mColumnCount = arguments!!.getInt(ARG_COLUMN_COUNT)
+            mClubId = arguments!!.getString(ARG_CLUB_ID)
         }
     }
 
@@ -34,18 +35,15 @@ class PlayerListFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             val context = view.getContext()
-            if (mColumnCount <= 1) {
-                view.layoutManager = LinearLayoutManager(context)
-            } else {
-                view.layoutManager = GridLayoutManager(context, mColumnCount)
-            }
+            view.layoutManager = GridLayoutManager(context, 2)
 
             view.addItemDecoration(GridSpacingItemDecoration(2, 20))
 
 
             val realm = Realm.getDefaultInstance()
-            val players = realm.where(Player::class.java).findAll()
-            view.adapter = PlayerRecyclerViewAdapter(players, mListener)
+            val club = realm.where(Club::class.java).equalTo(Club.FIELD_ID, mClubId).findFirst()
+            val players = club?.players
+            view.adapter = PlayerRecyclerViewAdapter(players ?: RealmList(), mListener)
         }
         return view
     }
@@ -92,14 +90,13 @@ class PlayerListFragment : Fragment() {
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        private val ARG_COLUMN_COUNT = "column-count"
+        private val ARG_CLUB_ID = "club_id"
 
         // TODO: Customize parameter initialization
-        fun newInstance(columnCount: Int): PlayerListFragment {
+        fun newInstance(clubId: String): PlayerListFragment {
             val fragment = PlayerListFragment()
             val args = Bundle()
-            args.putInt(ARG_COLUMN_COUNT, columnCount)
+            args.putString(ARG_CLUB_ID, clubId)
             fragment.arguments = args
             return fragment
         }

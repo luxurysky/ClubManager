@@ -59,7 +59,6 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
     private fun createDummyClubs() {
         val realm = Realm.getDefaultInstance()
         val clubs = realm.where(Club::class.java).findAll()
-        Log.i(TAG, "club count : " + clubs.count())
 
         realm.executeTransaction {
             clubs.deleteAllFromRealm()
@@ -89,18 +88,22 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
             realm.insert(club)
         }
 
-        Log.i(TAG, "club count : " + clubs.count())
+        for (c in clubs) {
+            Log.d(TAG, "1club insert :  $c")
+        }
     }
 
     private fun createDummyPlayers() {
         val realm = Realm.getDefaultInstance()
+        val tottenhamClub = realm.where(Club::class.java).equalTo(Club.FIELD_NAME, "토트넘").findFirst()
+        val realClub = realm.where(Club::class.java).equalTo(Club.FIELD_NAME, "레알 마드리드").findFirst()
+        val fc = realm.where(Club::class.java).equalTo(Club.FIELD_NAME, "FC 바르셀로나").findFirst()
+
         val players = realm.where(Player::class.java).findAll()
 
         realm.executeTransaction {
             players.deleteAllFromRealm()
         }
-
-        Log.i(TAG, "player count : " + players.count())
 
         realm.executeTransaction {
             val player = Player()
@@ -108,7 +111,7 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
             player.position = "Forward"
             player.squadNumber = 7
             player.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/hm_son.jpg"
-            realm.insert(player)
+            tottenhamClub?.players?.add(player)
         }
 
         realm.executeTransaction {
@@ -117,37 +120,32 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
             player.position = "Midfielder"
             player.squadNumber = 23
             player.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/c_eriksen.jpg"
-            realm.insert(player)
+            tottenhamClub?.players?.add(player)
         }
 
         realm.executeTransaction {
             val player = Player()
-            player.name = "Hugo Lloris"
-            player.position = "Goalkeeper"
-            player.squadNumber = 1
-            player.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/h_lloris.jpg"
-            realm.insert(player)
+            player.name = "Cristiano Ronaldo"
+            player.position = "Forward"
+            player.squadNumber = 7
+            player.photoUrl = "https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F12%2F201006081604205021.jpg"
+            realClub?.players?.add(player)
         }
-
         realm.executeTransaction {
             val player = Player()
-            player.name = "Jan Vertonghen"
-            player.position = "Defender"
-            player.squadNumber = 5
-            player.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/j_vertonghen.jpg"
-            realm.insert(player)
+            player.name = "Lionel Messi"
+            player.position = "Forward"
+            player.squadNumber = 10
+            player.photoUrl = "https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/174/102/254/50226862/1.0-1/50226862.jpg"
+            fc?.players?.add(player)
         }
 
-        realm.executeTransaction {
-            val player = Player()
-            player.name = "Dele Alli"
-            player.position = "Midfielder"
-            player.squadNumber = 20
-            player.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/d_alli.jpg"
-            realm.insert(player)
-        }
+        val clubs = realm.where(Club::class.java).findAll()
+        for (c in clubs) Log.d(TAG, "2club insert :  $c")
 
-        Log.i(TAG, "player count : " + players.count())
+        for (p in players) {
+            Log.d(TAG, "2player insert :  $p")
+        }
     }
 
 }

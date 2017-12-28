@@ -62,7 +62,7 @@ class ClubListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(columnCount: Int): ClubListFragment {
+        fun newInstance(): ClubListFragment {
             return ClubListFragment()
         }
     }

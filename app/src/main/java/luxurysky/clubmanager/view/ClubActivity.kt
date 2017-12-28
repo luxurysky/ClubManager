@@ -42,7 +42,8 @@ class ClubActivity : AppCompatActivity() {
             R.id.navigation_players -> {
                 fab.show()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.content, PlayerListFragment.newInstance(2))
+                val clubId = intent.getStringExtra(ClubActivity.EXTRA_CLUB_ID)
+                fragmentTransaction.replace(R.id.content, PlayerListFragment.newInstance(clubId))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
 
