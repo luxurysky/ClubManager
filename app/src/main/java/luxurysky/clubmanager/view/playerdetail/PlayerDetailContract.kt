@@ -6,16 +6,22 @@ import luxurysky.clubmanager.BaseView
 interface PlayerDetailContract {
 
     interface View : BaseView<Presenter> {
-//
-//        val isActive: Boolean
-//
+
+        val isActive: Boolean
+
         fun setLoadingIndicator(active: Boolean)
 //
         fun showMissingPlayer()
 //
 //        fun hideTitle()
 //
-        fun showTitle(title: String)
+        fun showPlayerPhoto(photo : String)
+
+        fun showPlayerName(name: String)
+
+        fun showPlayerSquadNumber(squadNumber : Int)
+
+        fun showPlayerPosition(position : String)
 //
 //        fun hideDescription()
 //
@@ -33,6 +39,6 @@ interface PlayerDetailContract {
     }
 
     interface Presenter : BasePresenter {
-        fun deleteTask()
+        fun deletePlayer()
     }
 }

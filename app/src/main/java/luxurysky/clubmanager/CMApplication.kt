@@ -8,9 +8,6 @@ import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.model.Player
 import luxurysky.clubmanager.util.Log
 
-/**
- * Created by HWANGJIN on 2017-12-18.
- */
 class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
     companion object {
         private val TAG = CMApplication::class.java.simpleName
@@ -116,7 +113,7 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
 
         realm.executeTransaction {
             val player = Player()
-            player.name = "Christian Eriksenabcdefghijk"
+            player.name = "Christian Eriksen"
             player.position = "Midfielder"
             player.squadNumber = 23
             player.photoUrl = "http://www.tottenhamhotspur.com/uploadedImages/Shared_Assets/Images/Player_Profiles/2017-18_First_Team/new_getty/c_eriksen.jpg"

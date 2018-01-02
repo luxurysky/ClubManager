@@ -2,6 +2,7 @@ package luxurysky.clubmanager.view.playerdetail
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import io.realm.Realm
 import luxurysky.clubmanager.model.DataHelper
 
@@ -10,6 +11,10 @@ class PlayerDetailPresenter(
         private val realm: Realm,
         private val playerDetailView: PlayerDetailContract.View
 ) : PlayerDetailContract.Presenter {
+
+    companion object {
+        private val TAG = PlayerDetailPresenter::class.java.simpleName
+    }
 
     init {
         playerDetailView.mPresenter = this
@@ -34,12 +39,31 @@ class PlayerDetailPresenter(
 
             }
             Handler(Looper.getMainLooper()).post({
-                playerDetailView.showTitle(player?.name ?: "")
-                playerDetailView.setLoadingIndicator(false)
+                with(playerDetailView)
+                {
+                    Log.d(TAG, "with isActive : $isActive")
+                    if (!isActive) {
+                        return@post
+                    }
+                    setLoadingIndicator(false)
+                    showPlayerPhoto(player?.photoUrl ?: "")
+                    showPlayerName(player?.name ?: "")
+                    showPlayerSquadNumber(player?.squadNumber ?: 0)
+                    showPlayerPosition(player?.position ?: "")
+                }
             })
         }).start()
     }
 
-    override fun deleteTask() {
+    override fun deletePlayer() {
+        if (playerId.isEmpty()) {
+            playerDetailView.showMissingPlayer()
+            return
+        }
+
+        DataHelper.deletePlayer(realm, playerId)
+        playerDetailView.showTaskDeleted()
+
+
     }
 }

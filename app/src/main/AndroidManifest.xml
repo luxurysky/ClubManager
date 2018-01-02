@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".CMApplication"
         android:allowBackup="true"
@@ -37,7 +42,7 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="luxurysky.clubmanager.view.playerdetail.PlayerDetailActivity"
+            android:name=".view.playerdetail.PlayerDetailActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

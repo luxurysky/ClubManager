@@ -25,5 +25,9 @@ open class Player : RealmObject() {
     var photoUrl: String = ""
 
     @LinkingObjects("players")
-    val clubs : RealmResults<Club>? = null
+    val clubs: RealmResults<Club>? = null
+
+    enum class Position {
+        Forward, Midfielder, Defender, Goalkeeper
+    }
 }
