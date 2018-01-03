@@ -2,11 +2,14 @@ package luxurysky.clubmanager
 
 import android.app.Activity
 import android.app.Application
+import android.os.Build
 import android.os.Bundle
 import io.realm.Realm
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.model.Player
+import luxurysky.clubmanager.util.BuildCompat
 import luxurysky.clubmanager.util.Log
+import java.util.*
 
 class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
     companion object {
@@ -16,10 +19,12 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
     override fun onCreate() {
         super.onCreate()
 
-        registerActivityLifecycleCallbacks(this)
-
         Log.init(this)
         Realm.init(this)
+
+        Log.d(TAG, "[onCreate] System Information model : ${Build.MODEL}, sdk : ${Build.VERSION.SDK_INT}, release : ${Build.VERSION.RELEASE}, abis : ${Arrays.toString(BuildCompat.supportedAbis())}")
+
+        registerActivityLifecycleCallbacks(this)
 
         createDummyClubs()
         createDummyPlayers()
