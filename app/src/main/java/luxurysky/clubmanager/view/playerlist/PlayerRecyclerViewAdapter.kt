@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.playerlist
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.fragment_player.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Player
-import luxurysky.clubmanager.view.PlayerListFragment.OnListFragmentInteractionListener
+import luxurysky.clubmanager.view.playerlist.PlayerListFragment.OnListFragmentInteractionListener
 
 
 class PlayerRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Player>, private val mListener: OnListFragmentInteractionListener?)
@@ -34,7 +34,7 @@ class PlayerRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Play
         holder.mNameView.text = mValues[position].name
 
         holder.mView.setOnClickListener {
-             mListener?.onListFragmentInteraction(mValues[position])
+             mListener?.onClickPlayer(mValues[position])
         }
     }
 

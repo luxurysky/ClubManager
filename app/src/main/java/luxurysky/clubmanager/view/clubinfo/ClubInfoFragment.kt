@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.clubinfo
 
 import android.content.Context
 import android.net.Uri
@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import io.realm.Realm
-import kotlinx.android.synthetic.main.fragment_club_info.*
 import kotlinx.android.synthetic.main.fragment_club_info.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.DataHelper

@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.clubschedule
 
 
 import android.os.Bundle

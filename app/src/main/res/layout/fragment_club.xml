@@ -14,18 +14,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/clubName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/text_margin"
-        android:layout_marginRight="@dimen/text_margin"
+        android:layout_margin="@dimen/text_margin"
+        android:maxLines="3"
         android:shadowColor="@color/colorBlack"
         android:shadowDx="1.0"
         android:shadowDy="1.0"
         android:shadowRadius="1.5"
         android:textColor="@color/colorWhite"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

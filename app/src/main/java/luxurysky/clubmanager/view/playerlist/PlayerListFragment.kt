@@ -1,9 +1,8 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.playerlist
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,7 @@ import io.realm.RealmList
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.model.Player
+import luxurysky.clubmanager.view.AutoFitGridLayoutManager
 import luxurysky.clubmanager.view.playerdetail.PlayerDetailActivity
 
 class PlayerListFragment : Fragment() {
@@ -35,10 +35,7 @@ class PlayerListFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             val context = view.getContext()
-            view.layoutManager = GridLayoutManager(context, 2)
-
-            view.addItemDecoration(GridSpacingItemDecoration(2, 20))
-
+            view.layoutManager = AutoFitGridLayoutManager(context, 400)
 
             val realm = Realm.getDefaultInstance()
             val club = realm.where(Club::class.java).equalTo(Club.FIELD_ID, mClubId).findFirst()
@@ -65,8 +62,7 @@ class PlayerListFragment : Fragment() {
 //    }
 
     private val mListener = object : OnListFragmentInteractionListener {
-        override fun onListFragmentInteraction(item: Player) {
-//            Toast.makeText(context, item.name, Toast.LENGTH_SHORT).show()
+        override fun onClickPlayer(item: Player) {
             val intent = Intent(context, PlayerDetailActivity::class.java)
             intent.putExtra(PlayerDetailActivity.EXTRA_PLAYER_ID, item.id)
             startActivity(intent)
@@ -74,18 +70,8 @@ class PlayerListFragment : Fragment() {
         }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
     interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: Player)
+        fun onClickPlayer(item: Player)
     }
 
     companion object {

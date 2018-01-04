@@ -7,6 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_club.*
 import luxurysky.clubmanager.R
+import luxurysky.clubmanager.view.clubinfo.ClubInfoFragment
+import luxurysky.clubmanager.view.clubschedule.ClubScheduleFragment
+import luxurysky.clubmanager.view.playerlist.PlayerListFragment
 
 class ClubActivity : AppCompatActivity() {
 
@@ -62,8 +65,6 @@ class ClubActivity : AppCompatActivity() {
             setDisplayShowTitleEnabled(false)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
         }
-
-
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home

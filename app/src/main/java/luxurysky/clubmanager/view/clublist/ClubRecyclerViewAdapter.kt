@@ -1,4 +1,4 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.clublist
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -31,7 +31,7 @@ class ClubRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Club>,
 
 
         holder.mView.setOnClickListener {
-            mListener?.onListFragmentInteraction(mValues[position])
+            mListener?.onClickClub(mValues[position])
         }
     }
 

@@ -40,7 +40,7 @@ class ClubListActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInt
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onListFragmentInteraction(item: Club) {
+    override fun onClickClub(item: Club) {
         val intent = Intent(this@ClubListActivity, ClubActivity::class.java)
         intent.putExtra(ClubActivity.EXTRA_CLUB_ID, item.id)
         startActivity(intent)

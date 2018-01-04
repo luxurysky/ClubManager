@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="luxurysky.clubmanager.view.ClubInfoFragment"
+        android:name="luxurysky.clubmanager.view.clubinfo.ClubInfoFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
