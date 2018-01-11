@@ -17,4 +17,7 @@
     <string name="prompt_position">Position</string>
     <string name="prompt_weight">Weight</string>
     <string name="prompt_height">Height</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="default_notification_channel_name" translatable="true">News</string>
 </resources>

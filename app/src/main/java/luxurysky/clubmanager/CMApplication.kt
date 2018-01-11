@@ -2,6 +2,9 @@ package luxurysky.clubmanager
 
 import android.app.Activity
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import io.realm.Realm
@@ -28,6 +31,13 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
 
         createDummyClubs()
         createDummyPlayers()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = getString(R.string.default_notification_channel_id)
+            val channelName = getString(R.string.default_notification_channel_name)
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
+        }
     }
 
     override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
@@ -82,13 +92,13 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
             realm.insert(club)
         }
 
-            realm.executeTransaction {
-                val club = Club()
+        realm.executeTransaction {
+            val club = Club()
             club.name = "토트넘"
-                club.emblemUrl = "https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F33%2F05%2F146_100303305_team_image_url_1435202894494.jpg"
-                club.playersUrl = "http://post.phinf.naver.net/MjAxNjEwMTlfODgg/MDAxNDc2ODYzMzYzOTQ4.6O9fJitxvYQ12rAGdnuyCIDC_wGrEjlwMJpnSnUMEhgg.TWQsQbImvknbEQP_P3ecFBh_tLYb9MeQPL0wQCvgtaEg.PNG/mug_obj_201610191649241635.jpg"
-                realm.insert(club)
-            }
+            club.emblemUrl = "https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F33%2F05%2F146_100303305_team_image_url_1435202894494.jpg"
+            club.playersUrl = "http://post.phinf.naver.net/MjAxNjEwMTlfODgg/MDAxNDc2ODYzMzYzOTQ4.6O9fJitxvYQ12rAGdnuyCIDC_wGrEjlwMJpnSnUMEhgg.TWQsQbImvknbEQP_P3ecFBh_tLYb9MeQPL0wQCvgtaEg.PNG/mug_obj_201610191649241635.jpg"
+            realm.insert(club)
+        }
 
         for (c in clubs) {
             Log.d(TAG, "1club insert :  $c")
