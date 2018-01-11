@@ -1,18 +1,18 @@
 package luxurysky.clubmanager.view.clubinfo
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import android.view.*
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_club_info.view.*
+import luxurysky.clubmanager.GlideApp
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.DataHelper
+import luxurysky.clubmanager.view.clubedit.ClubEditActivity
 
 class ClubInfoFragment : Fragment() {
 
@@ -28,8 +28,8 @@ class ClubInfoFragment : Fragment() {
         Log.d(TAG, "[onCreate] ${hashCode()}")
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_club_info, container, false)
 
         val realm = Realm.getDefaultInstance()
@@ -37,11 +37,28 @@ class ClubInfoFragment : Fragment() {
 
         view.myClubName.text = club?.name
 
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(club?.playersUrl)
+                .placeholder(R.drawable.ic_account_box_light_blue_700_24dp)
                 .into(view.myClubImage)
         Log.d(TAG, "[onCreateView]")
         return view
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_club, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val editPressed = item.itemId == R.id.action_edit
+        if (editPressed) {
+            val intent = Intent(context, ClubEditActivity::class.java)
+            intent.putExtra(ClubEditActivity.EXTRA_CLUB_ID, mClubId)
+            startActivity(intent)
+
+        }
+        return editPressed
     }
 
     // TODO: Rename method, update argument and hook method into UI event

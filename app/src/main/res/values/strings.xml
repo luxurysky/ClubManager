@@ -11,12 +11,24 @@
     <string name="title_players">Players</string>
     <string name="title_schedule">Schedule</string>
     <string name="title_create_club">Create Club</string>
+    <string name="title_edit_club">Edit Club</string>
     <string name="action_settings">Settings</string>
     <string name="prompt_name">Name</string>
     <string name="prompt_squad_number">Squad Number</string>
     <string name="prompt_position">Position</string>
     <string name="prompt_weight">Weight</string>
     <string name="prompt_height">Height</string>
+    <string name="prompt_main_stadium">Main Stadium</string>
+    <string name="prompt_sub_stadium">Sub Stadium</string>
+    <string name="prompt_dues">Dues</string>
+    <string name="prompt_match_time">Match Time</string>
+    <string name="prompt_age_group">Age Group</string>
+    <string name="menu_change_photo">Change Photo</string>
+    <string name="take_new_photo">Take new photo</string>
+    <string name="take_photo">Take photo</string>
+    <string name="pick_new_photo">Select new photo</string>
+    <string name="pick_photo">Choose photo</string>
+    <string name="removePhoto">Remove photo</string>
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="default_notification_channel_name" translatable="true">News</string>

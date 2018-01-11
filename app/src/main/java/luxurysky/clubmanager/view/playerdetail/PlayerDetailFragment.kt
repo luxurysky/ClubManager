@@ -3,8 +3,8 @@ package luxurysky.clubmanager.view.playerdetail
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_player_detail.*
+import luxurysky.clubmanager.GlideApp
 import luxurysky.clubmanager.R
 
 class PlayerDetailFragment : Fragment(), PlayerDetailContract.View {
@@ -47,8 +47,9 @@ class PlayerDetailFragment : Fragment(), PlayerDetailContract.View {
     }
 
     override fun showPlayerPhoto(photo: String) {
-        Glide.with(playerPhoto.context)
+        GlideApp.with(playerPhoto.context)
                 .load(photo)
+                .placeholder(R.drawable.ic_account_box_light_blue_700_24dp)
                 .into(playerPhoto)
     }
 

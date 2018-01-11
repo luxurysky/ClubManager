@@ -14,6 +14,7 @@ import luxurysky.clubmanager.util.Log
 import luxurysky.clubmanager.util.compatibility.APICompatibility
 import java.util.*
 
+
 class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
     companion object {
         private val TAG = CMApplication::class.java.simpleName
@@ -38,6 +39,7 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW))
         }
+
     }
 
     override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
@@ -79,6 +81,11 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
         realm.executeTransaction {
             val club = Club()
             club.name = "FC 바르셀로나"
+            club.mainStadium = "캄푸 누"
+            club.subStadium = "강서 개화 축구장"
+            club.dues = "분기당 3만원"
+            club.matchTime = "토요일 오후 18시"
+            club.ageGroup = "20대 ~ 30대"
             club.emblemUrl = "https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F84%2F09%2F146_100308409_team_image_url_1435388480471.jpg"
             club.playersUrl = "https://media-public.fcbarcelona.com/20157/0/document_thumbnail/20197/220/138/127/58690268/1.0-11/58690268.jpg"
             realm.insert(club)
@@ -87,6 +94,7 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
         realm.executeTransaction {
             val club = Club()
             club.name = "레알 마드리드"
+            club.mainStadium = "산티아고 베르나베우"
             club.emblemUrl = "https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F84%2F21%2F146_100308421_team_image_url_1435302794719.jpg"
             club.playersUrl = "https://search.pstatic.net/common/?src=http%3A%2F%2Fpost.phinf.naver.net%2F20150112_80%2Fyaspeed_1421042563655sC1go_PNG%2Fmug_obj_142104257864290575.jpg"
             realm.insert(club)
@@ -95,6 +103,7 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
         realm.executeTransaction {
             val club = Club()
             club.name = "토트넘"
+            club.mainStadium = "웸블리 스타디움"
             club.emblemUrl = "https://search.pstatic.net/common?type=o&size=152x114&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fkeypage%2Fimage%2Fdss%2F146%2F30%2F33%2F05%2F146_100303305_team_image_url_1435202894494.jpg"
             club.playersUrl = "http://post.phinf.naver.net/MjAxNjEwMTlfODgg/MDAxNDc2ODYzMzYzOTQ4.6O9fJitxvYQ12rAGdnuyCIDC_wGrEjlwMJpnSnUMEhgg.TWQsQbImvknbEQP_P3ecFBh_tLYb9MeQPL0wQCvgtaEg.PNG/mug_obj_201610191649241635.jpg"
             realm.insert(club)

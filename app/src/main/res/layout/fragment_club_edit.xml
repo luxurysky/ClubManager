@@ -1,0 +1,112 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="luxurysky.clubmanager.view.clubedit.ClubEditFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/myClubImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_account_box_light_blue_700_24dp" />
+
+        <LinearLayout
+            android:id="@+id/club_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/myClubImage" />
+
+        <!--   <LinearLayout
+               android:id="@+id/clubNameLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintTop_toBottomOf="@id/myClubImage">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="4dp"
+                   android:layout_marginStart="4dp"
+                   android:text="@string/prompt_name"
+                   android:textSize="12sp" />
+
+               <EditText
+                   android:id="@+id/clubName"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/prompt_name"
+                   android:inputType="text"
+                   android:maxLines="1"
+                   android:paddingEnd="12dp"
+                   android:paddingStart="12dp"
+                   android:singleLine="true" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/clubMainStadiumLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintTop_toBottomOf="@id/clubNameLayout">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="4dp"
+                   android:layout_marginStart="4dp"
+                   android:text="@string/prompt_main_stadium"
+                   android:textSize="12sp" />
+
+               <EditText
+                   android:id="@+id/clubMainStatium"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/prompt_main_stadium"
+                   android:inputType="text"
+                   android:maxLines="1"
+                   android:paddingEnd="12dp"
+                   android:paddingStart="12dp"
+                   android:singleLine="true" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:id="@+id/clubSubStadiumLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintTop_toBottomOf="@id/clubMainStadiumLayout">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginEnd="4dp"
+                   android:layout_marginStart="4dp"
+                   android:text="@string/prompt_sub_stadium"
+                   android:textSize="12sp" />
+
+               <EditText
+                   android:id="@+id/clubSubStatium"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/prompt_sub_stadium"
+                   android:inputType="text"
+                   android:maxLines="1"
+                   android:paddingEnd="12dp"
+                   android:paddingStart="12dp"
+                   android:singleLine="true" />
+           </LinearLayout>-->
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

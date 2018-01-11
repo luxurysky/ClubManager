@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.fragment_player.view.*
+import luxurysky.clubmanager.GlideApp
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Player
 import luxurysky.clubmanager.view.playerlist.PlayerListFragment.OnListFragmentInteractionListener
@@ -26,15 +26,16 @@ class PlayerRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Play
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.mPhotoView.context)
+        GlideApp.with(holder.mPhotoView.context)
                 .load(mValues[position].photoUrl)
+                .placeholder(R.drawable.ic_account_box_light_blue_700_24dp)
                 .apply(RequestOptions.bitmapTransform(RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.ALL)))
                 .into(holder.mPhotoView)
 
         holder.mNameView.text = mValues[position].name
 
         holder.mView.setOnClickListener {
-             mListener?.onClickPlayer(mValues[position])
+            mListener?.onClickPlayer(mValues[position])
         }
     }
 

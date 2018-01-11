@@ -8,8 +8,8 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
-import luxurysky.clubmanager.view.ClubActivity
-import luxurysky.clubmanager.view.ClubCreateActivity
+import luxurysky.clubmanager.view.club.ClubActivity
+import luxurysky.clubmanager.view.clubedit.ClubEditActivity
 
 class ClubListActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInteractionListener {
 
@@ -19,7 +19,7 @@ class ClubListActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInt
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener {
-            startActivity(Intent(this, ClubCreateActivity::class.java))
+            startActivity(Intent(this, ClubEditActivity::class.java))
         }
     }
 

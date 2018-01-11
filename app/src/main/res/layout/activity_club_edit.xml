@@ -2,9 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ccc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="luxurysky.clubmanager.view.ClubCreateActivity">
+    tools:context="luxurysky.clubmanager.view.clubedit.ClubEditActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -22,15 +23,24 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <fragment
+    <FrameLayout
         android:id="@+id/fragment"
-        android:name="luxurysky.clubmanager.view.clubinfo.ClubInfoFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        tools:layout="@layout/fragment_club_info" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+
+    <!--<fragment-->
+    <!--android:id="@+id/fragment"-->
+    <!--android:naluxurysky.clubmanager.view.clubedit.ClubEditFragmentment"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/appBarLayout"-->
+    <!--tools:layout="@layout/fragment_club_edit" />-->
 
 </android.support.constraint.ConstraintLayout>

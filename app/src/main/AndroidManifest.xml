@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.ClubActivity"
+            android:name=".view.club.ClubActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -43,8 +43,7 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.ClubCreateActivity"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
+            android:name=".view.clubedit.ClubEditActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.playerdetail.PlayerDetailActivity"

@@ -1,9 +1,8 @@
-package luxurysky.clubmanager.view
+package luxurysky.clubmanager.view.club
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_club.*
 import luxurysky.clubmanager.R
@@ -22,7 +21,7 @@ class ClubActivity : AppCompatActivity() {
             R.id.navigation_home -> {
                 fab.hide()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                val playerId = intent.getStringExtra(ClubActivity.EXTRA_CLUB_ID)
+                val playerId = intent.getStringExtra(EXTRA_CLUB_ID)
                 fragmentTransaction.replace(R.id.content, ClubInfoFragment.newInstance(playerId))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
@@ -45,7 +44,7 @@ class ClubActivity : AppCompatActivity() {
             R.id.navigation_players -> {
                 fab.show()
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                val clubId = intent.getStringExtra(ClubActivity.EXTRA_CLUB_ID)
+                val clubId = intent.getStringExtra(EXTRA_CLUB_ID)
                 fragmentTransaction.replace(R.id.content, PlayerListFragment.newInstance(clubId))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
@@ -68,11 +67,6 @@ class ClubActivity : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_club, menu)
-        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
