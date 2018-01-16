@@ -8,7 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_club_edit.view.*
 import kotlinx.android.synthetic.main.item_club_section.view.*
-import luxurysky.clubmanager.GlideApp
+import kotlinx.android.synthetic.main.view_photo_editor.*
+import kotlinx.android.synthetic.main.view_photo_editor.view.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.view.PhotoActionPopup
@@ -71,7 +72,7 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
     }
 
     private fun restoreView(view: View) {
-        view.myClubImage.setOnClickListener { onPhotoEditorViewClicked() }
+        view.photo.setOnClickListener { onPhotoEditorViewClicked() }
 
         for (viewType in VIEW_TYPES) {
             val field = LayoutInflater.from(context).inflate(R.layout.item_club_section, view.club_fields, false)
@@ -85,10 +86,7 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
     }
 
     override fun showClubPlayersPhoto(photo: String) {
-        GlideApp.with(context)
-                .load(photo)
-                .placeholder(R.drawable.ic_account_box_light_blue_700_24dp)
-                .into(view?.myClubImage)
+        photo_editor.setPhoto(photo)
     }
 
     override fun showClubName(name: String) {
@@ -116,7 +114,7 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
     }
 
     private fun onPhotoEditorViewClicked() {
-//        getClubEditActivity().changePhoto(PhotoActionPopup.Modes.NO_PHOTO)
+        getClubEditActivity().changePhoto(PhotoActionPopup.Modes.NO_PHOTO)
     }
 
     private fun getClubEditActivity(): ClubEditActivity {

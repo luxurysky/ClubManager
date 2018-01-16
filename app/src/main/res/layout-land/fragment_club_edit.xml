@@ -1,35 +1,15 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="luxurysky.clubmanager.view.clubedit.ClubEditFragment">
 
-    <ImageView
-        android:id="@+id/myClubImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_account_box_light_blue_700_24dp" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
+    <include layout="@layout/view_photo_editor" />
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/guideline"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/club_fields"
@@ -37,86 +17,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <!--    <LinearLayout
-                android:id="@+id/clubNameLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/myClubImage">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/prompt_name"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/clubName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_name"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingEnd="12dp"
-                    android:paddingStart="12dp"
-                    android:singleLine="true" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/clubMainStadiumLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/clubNameLayout">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/prompt_main_stadium"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/clubMainStatium"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_main_stadium"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingEnd="12dp"
-                    android:paddingStart="12dp"
-                    android:singleLine="true" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/clubSubStadiumLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/clubMainStadiumLayout">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/prompt_sub_stadium"
-                    android:textSize="12sp" />
-
-                <EditText
-                    android:id="@+id/clubSubStatium"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_sub_stadium"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingEnd="12dp"
-                    android:paddingStart="12dp"
-                    android:singleLine="true" />
-            </LinearLayout>-->
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="default_notification_channel_name">News</string>
+
+    <string name="photo_file_provider_authority">luxurysky.clubmanager.files</string>
+    <string name="contacts_file_provider_authority">luxurysky.clubmanager.files</string>
+
+</resources>
