@@ -2,7 +2,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="default_auto_fit_grid_width">120dp</dimen>
+    <dimen name="default_auto_fit_grid_width">160dp</dimen>
+    <dimen name="default_grid_spacing">20dp</dimen>
 
     <item name="landscape_photo_ratio" type="dimen" format="float">0.7</item>
     <item name="portrait_photo_ratio" type="dimen" format="float">1.96</item>

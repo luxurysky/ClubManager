@@ -6,4 +6,8 @@
     <string name="photo_file_provider_authority">luxurysky.clubmanager.files</string>
     <string name="contacts_file_provider_authority">luxurysky.clubmanager.files</string>
 
+    <string name="transition_club_name">transition_club_name</string>
+    <string name="transition_player_photo">transition_player_photo</string>
+    <string name="transition_player_name">transition_player_name</string>
+
 </resources>

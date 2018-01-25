@@ -35,7 +35,7 @@ class PlayerRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Play
         holder.mNameView.text = mValues[position].name
 
         holder.mView.setOnClickListener {
-            mListener?.onClickPlayer(mValues[position])
+            mListener?.onClickPlayer(mValues[position], holder.mPhotoView)
         }
     }
 

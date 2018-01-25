@@ -109,6 +109,24 @@ class CMApplication : Application(), Application.ActivityLifecycleCallbacks {
             realm.insert(club)
         }
 
+        realm.executeTransaction {
+            val club = Club()
+            club.name = "FC 서울"
+            club.mainStadium = "서울 월드컵 경기장"
+            club.emblemUrl = "http://www.fcseoul.com/resources/images/club/pic_emblem01.png"
+            club.playersUrl = "http://165.243.187.95/data03/Photo/img_lrg/2017103003612_b.JPG"
+            realm.insert(club)
+        }
+
+        realm.executeTransaction {
+            val club = Club()
+            club.name = "세레소 오사카"
+            club.mainStadium = "얀마 스타디움 나가이"
+            club.emblemUrl = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles7.naver.net%2F20120318_22%2Fabc5761_1332066461707fUWca_PNG%2F150px-OsakaFC.png"
+            club.playersUrl = "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.com%2Fimage%2F079%2F2017%2F01%2F12%2F20170112180648178678_99_20170112181004.jpg"
+            realm.insert(club)
+        }
+
         for (c in clubs) {
             Log.d(TAG, "1club insert :  $c")
         }

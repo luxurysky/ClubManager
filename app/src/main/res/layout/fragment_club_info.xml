@@ -15,14 +15,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/myClubName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:transitionName="@string/transition_club_name"
         android:shadowColor="@color/colorBlack"
         android:shadowDx="1.0"
         android:shadowDy="1.0"
+        app:autoSizeTextType="uniform"
         android:shadowRadius="1.5"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"

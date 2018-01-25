@@ -12,7 +12,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import io.realm.Realm
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_club_edit.*
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.view.PhotoSourceDialogFragment
 import luxurysky.clubmanager.view.PhotoUtils
@@ -99,7 +99,7 @@ class ClubEditActivity : AppCompatActivity(), PhotoSourceDialogFragment.Listener
         Log.d(TAG, "onActivityResult() called with: requestCode = [ $requestCode ], resultCode = [ $resultCode ], data = [ $data ]")
         if (requestCode == REQUEST_CODE_PHOTO_PICKED_WITH_DATA) {
             val uri = data?.data
-            PhotoUtils.savePhotoFromUriToUri(this, uri,  mTempPhotoUri, false)
+            PhotoUtils.savePhotoFromUriToUri(this, uri, mTempPhotoUri, false)
             Log.d(TAG, "onActivityResult: data : " + data?.data)
         }
         super.onActivityResult(requestCode, resultCode, data)

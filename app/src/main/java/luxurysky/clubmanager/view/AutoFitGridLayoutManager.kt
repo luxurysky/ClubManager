@@ -8,6 +8,7 @@ import luxurysky.clubmanager.R
 class AutoFitGridLayoutManager : GridLayoutManager {
 
     private var mColumnWidth = 0
+    private var mSpanCountUpdateListener: OnSpanCountUpdateListener? = null
 
     constructor(context: Context, columnWidth: Int) : super(context, 1) {
         setColumnWidth(checkedColumnWidth(context, columnWidth))
@@ -23,6 +24,10 @@ class AutoFitGridLayoutManager : GridLayoutManager {
             newColumnWidth = context.resources.getDimension(R.dimen.default_auto_fit_grid_width).toInt()
         }
         return newColumnWidth
+    }
+
+    fun setOnSpanCountUpdateListener(listener: OnSpanCountUpdateListener) {
+        mSpanCountUpdateListener = listener
     }
 
     fun setColumnWidth(columnWidth: Int) {
@@ -42,5 +47,14 @@ class AutoFitGridLayoutManager : GridLayoutManager {
             setSpanCount(spanCount)
         }
         super.onLayoutChildren(recycler, state)
+    }
+
+    override fun setSpanCount(spanCount: Int) {
+        super.setSpanCount(spanCount)
+        mSpanCountUpdateListener?.onSpanCountUpdate(spanCount)
+    }
+
+    interface OnSpanCountUpdateListener {
+        fun onSpanCountUpdate(spanCount: Int)
     }
 }

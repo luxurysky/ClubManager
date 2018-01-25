@@ -27,7 +27,7 @@
             android:name=".view.intro.IntroActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
             android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,19 +36,14 @@
         </activity>
         <activity
             android:name=".view.club.ClubActivity"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale" />
         <activity
-            android:name=".view.clublist.ClubListActivity"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.clubedit.ClubEditActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".view.MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale" />
+        <activity android:name=".view.clubedit.ClubEditActivity" />
         <activity
             android:name=".view.playerdetail.PlayerDetailActivity"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|fontScale" />
 
         <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>
@@ -60,6 +55,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="@string/contacts_file_provider_authority"
@@ -67,7 +63,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

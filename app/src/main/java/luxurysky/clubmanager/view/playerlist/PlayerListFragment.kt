@@ -2,7 +2,9 @@ package luxurysky.clubmanager.view.playerlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.model.Player
 import luxurysky.clubmanager.view.AutoFitGridLayoutManager
+import luxurysky.clubmanager.view.club.ClubActivity
 import luxurysky.clubmanager.view.playerdetail.PlayerDetailActivity
 
 class PlayerListFragment : Fragment() {
@@ -41,37 +44,23 @@ class PlayerListFragment : Fragment() {
             val club = realm.where(Club::class.java).equalTo(Club.FIELD_ID, mClubId).findFirst()
             val players = club?.players
             view.adapter = PlayerRecyclerViewAdapter(players ?: RealmList(), mListener)
+
         }
         return view
     }
 
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnListFragmentInteractionListener) {
-//            mListener = context
-//        } else {
-////            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-//        }
-//    }
-
-
-//    override fun onDetach() {
-//        super.onDetach()
-////        mListener = null
-//    }
-
     private val mListener = object : OnListFragmentInteractionListener {
-        override fun onClickPlayer(item: Player) {
+        override fun onClickPlayer(item: Player, photoView: View) {
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity as ClubActivity, photoView, ViewCompat.getTransitionName(photoView))
             val intent = Intent(context, PlayerDetailActivity::class.java)
             intent.putExtra(PlayerDetailActivity.EXTRA_PLAYER_ID, item.id)
-            startActivity(intent)
-
+            startActivity(intent, options.toBundle())
         }
     }
 
     interface OnListFragmentInteractionListener {
-        fun onClickPlayer(item: Player)
+        fun onClickPlayer(item: Player, photoView: View)
     }
 
     companion object {

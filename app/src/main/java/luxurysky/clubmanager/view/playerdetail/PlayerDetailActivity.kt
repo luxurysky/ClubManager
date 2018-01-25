@@ -17,6 +17,7 @@ class PlayerDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
+            setDisplayShowTitleEnabled(false)
         }
 
         val playerId = intent.getStringExtra(EXTRA_PLAYER_ID)

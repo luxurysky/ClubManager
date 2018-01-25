@@ -1,17 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="luxurysky.clubmanager.view.clublist.ClubListActivity">
+    tools:context="luxurysky.clubmanager.view.MainActivity">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_white_24dp"
+        android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/action_search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_more"
-        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:icon="@drawable/ic_more_vert_black_24dp"
         android:title="@string/action_more"
         app:showAsAction="ifRoom" />
 </menu>

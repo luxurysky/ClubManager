@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import luxurysky.clubmanager.R
-import luxurysky.clubmanager.view.clublist.ClubListActivity
+import luxurysky.clubmanager.view.MainActivity
 
 class IntroActivity : AppCompatActivity() {
     private val mHandler = Handler()
     private val mRunnable = Runnable {
-        startActivity(Intent(this, ClubListActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

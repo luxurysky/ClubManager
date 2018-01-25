@@ -10,7 +10,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.util.Log
-import luxurysky.clubmanager.view.clublist.ClubListActivity
+import luxurysky.clubmanager.view.MainActivity
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -24,7 +24,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(title: String, body: String) {
-        val intent = Intent(this, ClubListActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_UPDATE_CURRENT)
