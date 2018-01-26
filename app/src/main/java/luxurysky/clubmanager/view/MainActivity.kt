@@ -6,8 +6,6 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import luxurysky.clubmanager.R
@@ -26,23 +24,6 @@ class MainActivity : AppCompatActivity(), ClubListFragment.OnListFragmentInterac
         fab.setOnClickListener {
             startActivity(Intent(this, ClubEditActivity::class.java))
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        val id = item?.itemId
-
-        if (id == R.id.action_search) {
-            return true
-        } else if (id == R.id.action_more) {
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onClickClub(item: Club, view: View) {

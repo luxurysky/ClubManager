@@ -1,6 +1,7 @@
 package luxurysky.clubmanager.view.clublist
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.view.clublist.ClubListFragment.OnListFragmentInteractionListener
 
-class ClubRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Club>, private val mListener: OnListFragmentInteractionListener?)
+class ClubRecyclerViewAdapter(mValues: OrderedRealmCollection<Club>, private val mListener: OnListFragmentInteractionListener?)
     : RealmRecyclerViewAdapter<Club, ClubRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,14 +24,16 @@ class ClubRecyclerViewAdapter(private val mValues: OrderedRealmCollection<Club>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mNameTextView.text = mValues[position].name
+        if (data == null) return
+
+        holder.mNameTextView.text = data!![position].name
 
         GlideApp.with(holder.mEmblemImageView.context)
-                .load(mValues[position].emblemUrl)
+                .load(data!![position].emblemUrl)
                 .into(holder.mEmblemImageView)
 
         holder.mView.setOnClickListener {
-            mListener?.onClickClub(mValues[position], holder.mNameTextView)
+            mListener?.onClickClub(data!![position], holder.mNameTextView)
         }
     }
 

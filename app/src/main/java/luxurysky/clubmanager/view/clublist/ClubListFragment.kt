@@ -4,10 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import io.realm.Case
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_club_list.view.*
 import luxurysky.clubmanager.R
@@ -21,11 +21,13 @@ class ClubListFragment : Fragment() {
         private val TAG = ClubListFragment::class.java.simpleName
     }
 
+    private lateinit var mRealm: Realm
     private var mListener: OnListFragmentInteractionListener? = null
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mDecoration: GridSpacingItemDecoration
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_club_list, container, false)
 
         mRecyclerView = view.list
@@ -48,8 +50,8 @@ class ClubListFragment : Fragment() {
         })
         mRecyclerView.layoutManager = layoutManager
 
-        val realm = Realm.getDefaultInstance()
-        val clubs = realm.where(Club::class.java).findAll()
+
+        val clubs = mRealm.where(Club::class.java).findAll()
         mRecyclerView.adapter = ClubRecyclerViewAdapter(clubs, mListener)
 
         return view
@@ -57,6 +59,8 @@ class ClubListFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
+        mRealm = Realm.getDefaultInstance()
+
         if (context is OnListFragmentInteractionListener) {
             mListener = context
         } else {
@@ -64,9 +68,39 @@ class ClubListFragment : Fragment() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
+
+        val menuItem = menu.findItem(R.id.action_search)
+        (menuItem.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                val clubs = mRealm.where(Club::class.java).contains(Club.FIELD_NAME, newText, Case.INSENSITIVE).findAll()
+                (mRecyclerView.adapter as ClubRecyclerViewAdapter).updateData(clubs)
+                return false
+            }
+        })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item?.itemId
+
+        if (id == R.id.action_search) {
+            return true
+        } else if (id == R.id.action_more) {
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onDetach() {
         super.onDetach()
         mListener = null
+        mRealm.close()
     }
 
     interface OnListFragmentInteractionListener {
