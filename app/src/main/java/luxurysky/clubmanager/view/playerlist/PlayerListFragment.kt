@@ -38,7 +38,7 @@ class PlayerListFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             val context = view.getContext()
-            view.layoutManager = AutoFitGridLayoutManager(context, 400)
+            view.layoutManager = AutoFitGridLayoutManager(context, resources.getDimensionPixelSize(R.dimen.default_auto_fit_grid_width))
 
             val realm = Realm.getDefaultInstance()
             val club = realm.where(Club::class.java).equalTo(Club.FIELD_ID, mClubId).findFirst()
@@ -65,7 +65,7 @@ class PlayerListFragment : Fragment() {
 
     companion object {
 
-        private val ARG_CLUB_ID = "club_id"
+        private const val ARG_CLUB_ID = "club_id"
 
         // TODO: Customize parameter initialization
         fun newInstance(clubId: String): PlayerListFragment {

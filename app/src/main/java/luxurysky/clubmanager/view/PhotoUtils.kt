@@ -10,10 +10,6 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-/**
- * Created by HWANGJIN on 2018-01-11.
- */
 object PhotoUtils {
 
     private val TAG = PhotoUtils::class.java.simpleName

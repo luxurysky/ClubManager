@@ -6,9 +6,6 @@ import io.realm.annotations.LinkingObjects
 import io.realm.annotations.PrimaryKey
 import java.util.*
 
-/**
- * Created by HWANGJIN on 2017-12-21.
- */
 open class Player : RealmObject() {
     companion object {
         const val FIELD_ID = "id"

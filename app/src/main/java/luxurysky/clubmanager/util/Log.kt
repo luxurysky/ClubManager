@@ -13,9 +13,6 @@ import java.util.*
 import java.util.logging.*
 import java.util.logging.Formatter
 
-/**
- * Created by HWANGJIN on 2017-12-18.
- */
 object Log {
     private val TAG = Log::class.java.simpleName
 

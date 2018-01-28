@@ -9,10 +9,6 @@ import luxurysky.clubmanager.GlideApp
 import luxurysky.clubmanager.R
 import luxurysky.clubmanager.util.SchedulingUtils
 
-
-/**
- * Created by HWANGJIN on 2018-01-12.
- */
 class PhotoEditorView : RelativeLayout {
 
     companion object {
