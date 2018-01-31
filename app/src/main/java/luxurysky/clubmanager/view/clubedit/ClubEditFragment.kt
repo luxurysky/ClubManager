@@ -1,9 +1,12 @@
 package luxurysky.clubmanager.view.clubedit
 
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
+import android.widget.Toast
+import io.realm.RealmObject
 import kotlinx.android.synthetic.main.fragment_club_edit.view.*
 import kotlinx.android.synthetic.main.item_club_section.view.*
 import kotlinx.android.synthetic.main.view_photo_editor.*
@@ -91,7 +94,15 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val savePressed = item.itemId == R.id.action_save
         if (savePressed) {
-//            mPresenter.deletePlayer()
+
+            val name = mSectionViewMap[Club.FIELD_NAME]?.field?.text?.toString()
+            val mainStadium = mSectionViewMap[Club.FIELD_MAIN_STADIUM]?.field?.text?.toString()
+            val subStadium = mSectionViewMap[Club.FIELD_SUB_STADIUM]?.field?.text?.toString()
+            val dues = mSectionViewMap[Club.FIELD_DUES]?.field?.text?.toString()
+            val matchTime = mSectionViewMap[Club.FIELD_MATCH_TIME]?.field?.text?.toString()
+            val ageGroup = mSectionViewMap[Club.FIELD_AGE_GROUP]?.field?.text?.toString()
+
+            mPresenter.saveClub(name, mainStadium, subStadium, dues, matchTime, ageGroup)
         }
         return savePressed
     }
@@ -126,6 +137,11 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
 
     private fun onPhotoEditorViewClicked() {
         getClubEditActivity().changePhoto(PhotoActionPopup.Modes.NO_PHOTO)
+    }
+
+    override fun showSaveCompleted() {
+        Toast.makeText(context, R.string.club_saved_toast, Toast.LENGTH_SHORT).show()
+        getClubEditActivity().onBackPressed()
     }
 
     private fun getClubEditActivity(): ClubEditActivity {

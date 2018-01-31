@@ -44,7 +44,7 @@ class PhotoSourceDialogFragment : DialogFragment() {
     }
 
     companion object {
-        private val ARG_PHOTO_MODE = "photoMode"
+        private const val ARG_PHOTO_MODE = "photoMode"
         fun show(activity: FragmentActivity, photoMode: Int) {
             if (activity !is Listener) {
                 throw IllegalArgumentException("Activity must implement " + Listener::class.java.name)

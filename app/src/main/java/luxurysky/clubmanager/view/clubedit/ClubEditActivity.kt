@@ -93,6 +93,10 @@ class ClubEditActivity : AppCompatActivity(), PhotoSourceDialogFragment.Listener
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mRealm.close()
+    }
 
     companion object {
         private val TAG = ClubEditActivity::class.java.simpleName

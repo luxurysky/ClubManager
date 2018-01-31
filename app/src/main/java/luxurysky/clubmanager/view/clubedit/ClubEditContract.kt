@@ -11,19 +11,21 @@ interface ClubEditContract {
 
         val isActive: Boolean
 
-        fun showClubPlayersPhoto(photo : String)
+        fun showClubPlayersPhoto(photo: String)
 
-        fun showClubName(name : String)
+        fun showClubName(name: String)
 
-        fun showClubMainStadium(mainStadium : String)
+        fun showClubMainStadium(mainStadium: String)
 
-        fun showClubSubStadium(subStadium : String)
+        fun showClubSubStadium(subStadium: String)
 
-        fun showClubDues(dues : String)
+        fun showClubDues(dues: String)
 
-        fun showClubMatchTime(matchTime : String)
+        fun showClubMatchTime(matchTime: String)
 
-        fun showClubAgeGroup(ageGroup : String)
+        fun showClubAgeGroup(ageGroup: String)
+
+        fun showSaveCompleted()
 //
 //        fun setLoadingIndicator(active: Boolean)
 //        //
@@ -56,6 +58,6 @@ interface ClubEditContract {
 
     interface Presenter : BasePresenter {
         // view -> presenter
-
+        fun saveClub(name: String?, mainStadium: String?, subStadium: String?, dues: String?, matchTime: String?, ageGroup: String?)
     }
 }

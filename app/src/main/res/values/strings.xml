@@ -28,4 +28,5 @@
     <string name="pick_new_photo">Select new photo</string>
     <string name="pick_photo">Choose photo</string>
     <string name="removePhoto">Remove photo</string>
+    <string name="club_saved_toast">Club saved</string>
 </resources>
