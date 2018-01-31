@@ -17,9 +17,9 @@ object Log {
     private val TAG = Log::class.java.simpleName
 
     private val DEBUG = BuildConfig.DEBUG
-    private val LOG_FILE_NAME = "FileLog%g.txt"
-    private val LOG_FILE_SIZE_LIMIT = 10 * 1024 * 1024
-    private val LOG_FILE_MAX_COUNT = 5
+    private const val LOG_FILE_NAME = "FileLog%g.txt"
+    private const val LOG_FILE_SIZE_LIMIT = 10 * 1024 * 1024
+    private const val LOG_FILE_MAX_COUNT = 5
 
     private val dateFormat = SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.getDefault())
 

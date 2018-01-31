@@ -3,9 +3,7 @@ package luxurysky.clubmanager.view.clubedit
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import kotlinx.android.synthetic.main.fragment_club_edit.view.*
 import kotlinx.android.synthetic.main.item_club_section.view.*
 import kotlinx.android.synthetic.main.view_photo_editor.*
@@ -18,11 +16,11 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
 
     companion object {
         private val TAG = ClubEditFragment::class.java.simpleName
-        private val KEY_NAME = "name"
+        private const val KEY_NAME = "name"
 
         private val VIEW_TYPES = arrayOf(Club.FIELD_NAME, Club.FIELD_MAIN_STADIUM, Club.FIELD_SUB_STADIUM, Club.FIELD_DUES, Club.FIELD_MATCH_TIME, Club.FIELD_AGE_GROUP)
 
-        private val ARG_CLUB_ID = "club_id"
+        private const val ARG_CLUB_ID = "club_id"
 
         fun newInstance(clubId: String?): ClubEditFragment {
             val fragment = ClubEditFragment()
@@ -66,6 +64,7 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_club_edit, container, false)
         restoreView(view)
         return view
@@ -83,6 +82,18 @@ class ClubEditFragment : Fragment(), ClubEditContract.View {
 
             mSectionViewMap[viewType] = field
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_club_edit, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val savePressed = item.itemId == R.id.action_save
+        if (savePressed) {
+//            mPresenter.deletePlayer()
+        }
+        return savePressed
     }
 
     override fun showClubPlayersPhoto(photo: String) {
