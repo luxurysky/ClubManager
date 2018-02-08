@@ -15,6 +15,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary true
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -49,9 +50,21 @@ dependencies {
     // firebase
     implementation "com.google.firebase:firebase-core:$firebase_version"
     implementation "com.google.firebase:firebase-messaging:$firebase_version"
-    implementation('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+    implementation("com.crashlytics.sdk.android:crashlytics:2.7.1@aar") {
         transitive = true
     }
+
+    // google calendar
+    implementation 'com.google.android.gms:play-services-auth:11.6.0'
+    implementation ('com.google.api-client:google-api-client-android:1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation ('com.google.apis:google-api-services-calendar:v3-rev287-1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
+    // calendarview
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
     // test
     testImplementation 'junit:junit:4.12'

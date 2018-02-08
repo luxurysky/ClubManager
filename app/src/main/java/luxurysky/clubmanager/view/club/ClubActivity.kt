@@ -36,15 +36,16 @@ class ClubActivity : AppCompatActivity() {
             }
             R.id.navigation_schedule -> {
                 fab.hide()
+                val clubId = intent.getStringExtra(EXTRA_CLUB_ID)
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.content, ClubScheduleFragment.newInstance("1", "2"))
+                fragmentTransaction.replace(R.id.content, ClubScheduleFragment.newInstance(clubId))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_players -> {
                 fab.show()
-                val fragmentTransaction = supportFragmentManager.beginTransaction()
                 val clubId = intent.getStringExtra(EXTRA_CLUB_ID)
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.content, PlayerListFragment.newInstance(clubId))
                 fragmentTransaction.commitAllowingStateLoss()
                 return@OnNavigationItemSelectedListener true

@@ -42,6 +42,7 @@ open class Club : RealmObject() {
     var dues: String = ""
     var matchTime: String = ""
     var ageGroup: String = ""
+    var googleCalendarId : String = ""
     var players: RealmList<Player> = RealmList()
 
     // temporary field
