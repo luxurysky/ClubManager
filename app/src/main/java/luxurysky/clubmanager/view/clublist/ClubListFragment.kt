@@ -52,7 +52,7 @@ class ClubListFragment : Fragment() {
 
 
         val clubs = mRealm.where(Club::class.java).findAll()
-        mRecyclerView.adapter = ClubRecyclerViewAdapter(clubs, mListener)
+        mRecyclerView.adapter = ClubListRecyclerViewAdapter(clubs, mListener)
 
         return view
     }
@@ -79,7 +79,7 @@ class ClubListFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 val clubs = mRealm.where(Club::class.java).contains(Club.FIELD_NAME, newText, Case.INSENSITIVE).findAll()
-                (mRecyclerView.adapter as ClubRecyclerViewAdapter).updateData(clubs)
+                (mRecyclerView.adapter as ClubListRecyclerViewAdapter).updateData(clubs)
                 return false
             }
         })

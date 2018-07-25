@@ -30,22 +30,22 @@ object PhotoActionPopup {
      */
     object Flags {
         /** If set, show choice to remove photo.  */
-        val REMOVE_PHOTO = 2
+        const val REMOVE_PHOTO = 2
         /** If set, show choices to take a picture with the camera, or pick one from the gallery.  */
-        val TAKE_OR_PICK_PHOTO = 4
+        const val TAKE_OR_PICK_PHOTO = 4
         /**
          * If set, modifies the wording in the choices for TAKE_OR_PICK_PHOTO
          * to emphasize that the existing photo will be replaced.
          */
-        val TAKE_OR_PICK_PHOTO_REPLACE_WORDING = 8
+        const val TAKE_OR_PICK_PHOTO_REPLACE_WORDING = 8
     }
 
     /**
      * Convenient combinations of commonly-used flags (see [Flags]).
      */
     object Modes {
-        val NO_PHOTO = Flags.TAKE_OR_PICK_PHOTO
-        val READ_ONLY_PHOTO = 0
+        const val NO_PHOTO = Flags.TAKE_OR_PICK_PHOTO
+        const val READ_ONLY_PHOTO = 0
         val WRITE_ABLE_PHOTO = Flags.REMOVE_PHOTO or
                 Flags.TAKE_OR_PICK_PHOTO or
                 Flags.TAKE_OR_PICK_PHOTO_REPLACE_WORDING
@@ -84,9 +84,9 @@ object PhotoActionPopup {
         }
 
         companion object {
-            val ID_TAKE_PHOTO = 1
-            val ID_PICK_PHOTO = 2
-            val ID_REMOVE = 3
+            const val ID_TAKE_PHOTO = 1
+            const val ID_PICK_PHOTO = 2
+            const val ID_REMOVE = 3
         }
     }
 }

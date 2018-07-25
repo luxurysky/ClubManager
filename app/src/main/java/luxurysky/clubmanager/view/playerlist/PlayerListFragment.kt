@@ -43,7 +43,7 @@ class PlayerListFragment : Fragment() {
             val realm = Realm.getDefaultInstance()
             val club = realm.where(Club::class.java).equalTo(Club.FIELD_ID, mClubId).findFirst()
             val players = club?.players
-            view.adapter = PlayerRecyclerViewAdapter(players ?: RealmList(), mListener)
+            view.adapter = PlayerListRecyclerViewAdapter(players ?: RealmList(), mListener)
 
         }
         return view

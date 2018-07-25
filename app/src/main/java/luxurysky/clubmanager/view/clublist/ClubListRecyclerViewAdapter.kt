@@ -14,8 +14,8 @@ import luxurysky.clubmanager.R
 import luxurysky.clubmanager.model.Club
 import luxurysky.clubmanager.view.clublist.ClubListFragment.OnListFragmentInteractionListener
 
-class ClubRecyclerViewAdapter(mValues: OrderedRealmCollection<Club>, private val mListener: OnListFragmentInteractionListener?)
-    : RealmRecyclerViewAdapter<Club, ClubRecyclerViewAdapter.ViewHolder>(mValues, true) {
+class ClubListRecyclerViewAdapter(mValues: OrderedRealmCollection<Club>, private val mListener: OnListFragmentInteractionListener?)
+    : RealmRecyclerViewAdapter<Club, ClubListRecyclerViewAdapter.ViewHolder>(mValues, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_club, parent, false)

@@ -7,7 +7,7 @@ object SchedulingUtils {
     fun doAfterLayout(view: View, runnable: Runnable) {
         view.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                view.viewTreeObserver.removeGlobalOnLayoutListener(this)
+                view.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 runnable.run()
             }
         })

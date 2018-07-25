@@ -9,7 +9,6 @@
         android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:attr/selectableItemBackground"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/ic_account_box_light_blue_700_24dp" />
 
@@ -22,5 +21,12 @@
         android:layout_margin="16dp"
         android:tint="@android:color/white"
         app:srcCompat="@drawable/ic_photo_camera_white_24dp" />
+
+     <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_background_material_dark"
+        android:clickable="true"
+        android:focusable="true" />
 
 </luxurysky.clubmanager.view.PhotoEditorView>

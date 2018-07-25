@@ -13,7 +13,7 @@ import java.util.*
 object PhotoUtils {
 
     private val TAG = PhotoUtils::class.java.simpleName
-    private val PHOTO_DATE_FORMAT = "'IMG'_yyyyMMdd_HHmmss"
+    private const val PHOTO_DATE_FORMAT = "'IMG'_yyyyMMdd_HHmmss"
 
     fun generateTempImageUri(context: Context): Uri {
         val fileProviderAuthority = context.resources.getString(R.string.photo_file_provider_authority)

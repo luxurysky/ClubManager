@@ -1,12 +1,10 @@
 package luxurysky.clubmanager.view.clubedit
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.*
 import android.widget.Toast
-import io.realm.RealmObject
 import kotlinx.android.synthetic.main.fragment_club_edit.view.*
 import kotlinx.android.synthetic.main.item_club_section.view.*
 import kotlinx.android.synthetic.main.view_photo_editor.*

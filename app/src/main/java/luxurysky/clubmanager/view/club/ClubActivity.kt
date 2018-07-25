@@ -1,6 +1,7 @@
 package luxurysky.clubmanager.view.club
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
@@ -14,6 +15,7 @@ class ClubActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_CLUB_ID = "CLUB_ID"
+        const val KEY_SELECTED_ITEM_ID = "selected_item_id"
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -67,7 +69,12 @@ class ClubActivity : AppCompatActivity() {
         }
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        navigation.selectedItemId = R.id.navigation_home
+        navigation.selectedItemId = savedInstanceState?.getInt(KEY_SELECTED_ITEM_ID) ?: R.id.navigation_home
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState.putInt(KEY_SELECTED_ITEM_ID, navigation.selectedItemId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

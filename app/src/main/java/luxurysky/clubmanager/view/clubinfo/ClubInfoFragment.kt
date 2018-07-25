@@ -107,7 +107,7 @@ class ClubInfoFragment : Fragment() {
     companion object {
         private val TAG = ClubInfoFragment::class.java.simpleName
 
-        private val ARG_PARAM1 = "club_id"
+        private const val ARG_PARAM1 = "club_id"
 
         fun newInstance(clubId: String): ClubInfoFragment {
             val fragment = ClubInfoFragment()
